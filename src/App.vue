@@ -7,5 +7,7 @@ useMeta({
 <template>
   <metainfo />
 
+  <TopBar />
+
   <RouterView />
 </template>
