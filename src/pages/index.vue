@@ -59,6 +59,120 @@ const workExperiences: workExperience[] = [
     description: 'Developed and maintained web applications using Java and Spring Boot.'
   }
 ]
+
+const projects = [
+  {
+    slug: 'portfolio-website',
+    title: 'Portfolio Website',
+    description: 'Modern personal portfolio with Vue.js',
+    image: 'https://via.placeholder.com/400x250',
+    technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS']
+  },
+  {
+    slug: 'task-manager',
+    title: 'Task Manager App',
+    description: 'Collaborative task management platform',
+    image: 'https://via.placeholder.com/400x250',
+    technologies: ['Vue.js', 'Nuxt.js', 'Pinia']
+  },
+  {
+    slug: 'ecommerce-platform',
+    title: 'E-Commerce Platform',
+    description: 'Full-featured online shopping experience',
+    image: 'https://via.placeholder.com/400x250',
+    technologies: ['Vue.js', 'Stripe', 'MongoDB']
+  }
+]
+
+const skills = {
+  frontend: [
+    'Vue.js',
+    'Nuxt.js',
+    'TypeScript',
+    'JavaScript',
+    'HTML5',
+    'CSS3',
+    'Tailwind CSS',
+    'Pinia',
+    'Vuex'
+  ],
+  tools: ['Git', 'Vite', 'WebRTC', 'Socket.io', 'REST APIs', 'Vitest', 'ESLint', 'npm/yarn'],
+  practices: [
+    'Performance Optimization',
+    'Accessibility (a11y)',
+    'Responsive Design',
+    'SEO Optimization'
+  ],
+  soft: ['Agile/Scrum Methodology', 'Team Collaboration', 'Problem Solving', 'Code Review']
+}
+
+const contacts = [
+  {
+    icon: 'mdi:email',
+    iconColor: 'text-yellow-500',
+    title: 'Email',
+    value: 'mirkobosetti@example.com',
+    href: 'mailto:mirkobosetti@example.com'
+  },
+  {
+    icon: 'mdi:linkedin',
+    iconColor: 'text-blue-500',
+    title: 'LinkedIn',
+    value: 'linkedin.com/in/mirkobosetti',
+    href: 'https://www.linkedin.com/in/mirkobosetti',
+    isExternal: true
+  },
+  {
+    icon: 'mdi:github',
+    iconColor: 'text-purple-500',
+    title: 'GitHub',
+    value: 'github.com/mirkobosetti',
+    href: 'https://github.com/mirkobosetti',
+    isExternal: true
+  },
+  {
+    icon: 'mdi:map-marker',
+    iconColor: 'text-green-500',
+    title: 'Location',
+    value: 'Milan, Italy'
+  }
+]
+
+const strengths = [
+  {
+    boldText: 'Problem Solver',
+    text: 'I approach challenges methodically and find elegant solutions'
+  },
+  { boldText: 'Team Player', text: 'Experience collaborating in agile environments' },
+  {
+    boldText: 'Quality Focused',
+    text: 'Strong believer in testing, code reviews, and documentation'
+  },
+  { boldText: 'Fast Learner', text: 'Quick to adapt to new technologies and frameworks' }
+]
+
+const hobbies = [
+  {
+    icon: 'mdi:book-open-variant',
+    text: 'Reading tech blogs and staying updated with web trends',
+    iconColor: 'text-yellow-500'
+  },
+  {
+    icon: 'mdi:code-braces-box',
+    text: 'Contributing to open source projects',
+    iconColor: 'text-blue-500'
+  },
+  {
+    icon: 'mdi:hiking',
+    text: 'Hiking and exploring the Italian Alps',
+    iconColor: 'text-green-500'
+  },
+  {
+    icon: 'mdi:gamepad-variant',
+    text: 'Gaming and UI/UX analysis in interactive media',
+    iconColor: 'text-purple-500'
+  }
+]
 </script>
 
 <template>
@@ -76,10 +190,9 @@ const workExperiences: workExperience[] = [
     <Separator />
 
     <div id="about" class="min-h-[50vh] my-16 max-w-6xl scroll-mt-20">
-      <h2 class="text-5xl font-bold mb-12 flex items-center gap-4">
-        <iconify-icon icon="mdi:account-circle" class="inline-block mr-2 text-yellow-500" />
-        <span>About Me</span>
-      </h2>
+      <div class="mb-12">
+        <SectionHeader icon="mdi:account-circle" title="About Me" />
+      </div>
 
       <div class="grid md:grid-cols-3 gap-8 items-start">
         <!-- Avatar and Quick Info -->
@@ -180,46 +293,13 @@ const workExperiences: workExperience[] = [
               </CardHeader>
               <CardContent class="p-6">
                 <ul class="space-y-2 text-base">
-                  <li class="flex items-start gap-2">
-                    <iconify-icon
-                      icon="mdi:check-circle"
-                      class="text-green-500 mt-1 flex-shrink-0"
-                    />
-                    <span
-                      ><strong>Problem Solver:</strong> I approach challenges methodically and find
-                      elegant solutions</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <iconify-icon
-                      icon="mdi:check-circle"
-                      class="text-green-500 mt-1 flex-shrink-0"
-                    />
-                    <span
-                      ><strong>Team Player:</strong> Experience collaborating in agile
-                      environments</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <iconify-icon
-                      icon="mdi:check-circle"
-                      class="text-green-500 mt-1 flex-shrink-0"
-                    />
-                    <span
-                      ><strong>Quality Focused:</strong> Strong believer in testing, code reviews,
-                      and documentation</span
-                    >
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <iconify-icon
-                      icon="mdi:check-circle"
-                      class="text-green-500 mt-1 flex-shrink-0"
-                    />
-                    <span
-                      ><strong>Fast Learner:</strong> Quick to adapt to new technologies and
-                      frameworks</span
-                    >
-                  </li>
+                  <InfoListItem
+                    v-for="strength in strengths"
+                    :key="strength.boldText"
+                    icon="mdi:check-circle"
+                    :bold-text="strength.boldText"
+                    :text="strength.text"
+                  />
                 </ul>
               </CardContent>
             </Card>
@@ -233,22 +313,13 @@ const workExperiences: workExperience[] = [
               </CardHeader>
               <CardContent class="p-6">
                 <ul class="space-y-2 text-base">
-                  <li class="flex items-center gap-2">
-                    <iconify-icon icon="mdi:book-open-variant" class="text-yellow-500" />
-                    <span>Reading tech blogs and staying updated with web trends</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <iconify-icon icon="mdi:code-braces-box" class="text-blue-500" />
-                    <span>Contributing to open source projects</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <iconify-icon icon="mdi:hiking" class="text-green-500" />
-                    <span>Hiking and exploring the Italian Alps</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <iconify-icon icon="mdi:gamepad-variant" class="text-purple-500" />
-                    <span>Gaming and UI/UX analysis in interactive media</span>
-                  </li>
+                  <InfoListItem
+                    v-for="hobby in hobbies"
+                    :key="hobby.text"
+                    :icon="hobby.icon"
+                    :icon-color="hobby.iconColor"
+                    :text="hobby.text"
+                  />
                 </ul>
               </CardContent>
             </Card>
@@ -285,10 +356,7 @@ const workExperiences: workExperience[] = [
       class="min-h-[50vh] my-16 max-w-3xl scroll-mt-20"
       v-if="workExperiences.length"
     >
-      <h2 class="text-5xl font-bold mb-4 flex items-center gap-4">
-        <iconify-icon icon="mdi:briefcase" class="inline-block mr-2 text-yellow-500" />
-        <span>Work Experience</span>
-      </h2>
+      <SectionHeader icon="mdi:briefcase" title="Work Experience" />
       <Stepper
         orientation="vertical"
         class="mx-auto flex w-full flex-col justify-start gap-20 mt-24"
@@ -362,10 +430,7 @@ const workExperiences: workExperience[] = [
 
     <Separator class="my-8" />
     <div id="education" class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20">
-      <h2 class="text-5xl font-bold mb-4 flex items-center gap-4">
-        <iconify-icon icon="mdi:school" class="inline-block mr-2 text-yellow-500" />
-        <span>Education</span>
-      </h2>
+      <SectionHeader icon="mdi:school" title="Education" />
 
       <Card class="mt-12">
         <CardHeader>
@@ -416,196 +481,65 @@ const workExperiences: workExperience[] = [
     </div>
     <Separator class="my-8" />
     <div id="projects" class="min-h-[50vh] my-16 scroll-mt-20">
-      <h2 class="text-5xl font-bold mb-4 flex items-center gap-4">
-        <iconify-icon icon="mdi:puzzle-heart" class="inline-block mr-2 text-yellow-500" />
-        <span>Featured Projects</span>
-      </h2>
+      <SectionHeader icon="mdi:puzzle-heart" title="Featured Projects" />
       <p class="text-2xl max-w-3xl mt-8 mb-12">
         Here are some of the projects I've worked on, showcasing my skills in modern web
         development.
       </p>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        <Card class="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-          <RouterLink to="/projects/portfolio-website">
-            <img
-              src="https://via.placeholder.com/400x250"
-              alt="Portfolio Website"
-              class="w-full h-48 object-cover"
-            />
-            <CardHeader>
-              <CardTitle class="text-2xl">Portfolio Website</CardTitle>
-              <CardDescription>Modern personal portfolio with Vue.js</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div class="flex flex-wrap gap-2">
-                <Badge variant="secondary">Vue.js</Badge>
-                <Badge variant="secondary">TypeScript</Badge>
-                <Badge variant="secondary">Tailwind CSS</Badge>
-              </div>
-            </CardContent>
-          </RouterLink>
-        </Card>
-
-        <Card class="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-          <RouterLink to="/projects/task-manager">
-            <img
-              src="https://via.placeholder.com/400x250"
-              alt="Task Manager"
-              class="w-full h-48 object-cover"
-            />
-            <CardHeader>
-              <CardTitle class="text-2xl">Task Manager App</CardTitle>
-              <CardDescription>Collaborative task management platform</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div class="flex flex-wrap gap-2">
-                <Badge variant="secondary">Vue.js</Badge>
-                <Badge variant="secondary">Nuxt.js</Badge>
-                <Badge variant="secondary">Pinia</Badge>
-              </div>
-            </CardContent>
-          </RouterLink>
-        </Card>
-
-        <Card class="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-          <RouterLink to="/projects/ecommerce-platform">
-            <img
-              src="https://via.placeholder.com/400x250"
-              alt="E-Commerce Platform"
-              class="w-full h-48 object-cover"
-            />
-            <CardHeader>
-              <CardTitle class="text-2xl">E-Commerce Platform</CardTitle>
-              <CardDescription>Full-featured online shopping experience</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div class="flex flex-wrap gap-2">
-                <Badge variant="secondary">Vue.js</Badge>
-                <Badge variant="secondary">Stripe</Badge>
-                <Badge variant="secondary">MongoDB</Badge>
-              </div>
-            </CardContent>
-          </RouterLink>
-        </Card>
+        <ProjectCard
+          v-for="project in projects"
+          :key="project.slug"
+          :slug="project.slug"
+          :title="project.title"
+          :description="project.description"
+          :image="project.image"
+          :technologies="project.technologies"
+        />
       </div>
     </div>
     <Separator class="my-8" />
     <div id="skills" class="min-h-[50vh] my-16 max-w-5xl scroll-mt-20">
-      <h2 class="text-5xl font-bold mb-4 flex items-center gap-4">
-        <iconify-icon icon="mdi:lightbulb-on" class="inline-block mr-2 text-yellow-500" />
-        <span>Skills & Expertise</span>
-      </h2>
+      <SectionHeader icon="mdi:lightbulb-on" title="Skills & Expertise" />
 
       <div class="grid md:grid-cols-2 gap-8 mt-12">
-        <Card>
-          <CardHeader>
-            <CardTitle class="flex items-center gap-2 text-2xl">
-              <iconify-icon icon="mdi:code-braces" class="text-yellow-500" />
-              Frontend Development
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div class="flex flex-wrap gap-2">
-              <Badge class="text-base px-3 py-1">Vue.js</Badge>
-              <Badge class="text-base px-3 py-1">Nuxt.js</Badge>
-              <Badge class="text-base px-3 py-1">TypeScript</Badge>
-              <Badge class="text-base px-3 py-1">JavaScript</Badge>
-              <Badge class="text-base px-3 py-1">HTML5</Badge>
-              <Badge class="text-base px-3 py-1">CSS3</Badge>
-              <Badge class="text-base px-3 py-1">Tailwind CSS</Badge>
-              <Badge class="text-base px-3 py-1">Pinia</Badge>
-              <Badge class="text-base px-3 py-1">Vuex</Badge>
-            </div>
-          </CardContent>
-        </Card>
+        <SkillCard
+          title="Frontend Development"
+          icon="mdi:code-braces"
+          icon-color="text-yellow-500"
+          :items="skills.frontend"
+          type="badge"
+        />
 
-        <Card>
-          <CardHeader>
-            <CardTitle class="flex items-center gap-2 text-2xl">
-              <iconify-icon icon="mdi:tools" class="text-green-500" />
-              Tools & Technologies
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div class="flex flex-wrap gap-2">
-              <Badge class="text-base px-3 py-1">Git</Badge>
-              <Badge class="text-base px-3 py-1">Vite</Badge>
-              <Badge class="text-base px-3 py-1">WebRTC</Badge>
-              <Badge class="text-base px-3 py-1">Socket.io</Badge>
-              <Badge class="text-base px-3 py-1">REST APIs</Badge>
-              <Badge class="text-base px-3 py-1">Vitest</Badge>
-              <Badge class="text-base px-3 py-1">ESLint</Badge>
-              <Badge class="text-base px-3 py-1">npm/yarn</Badge>
-            </div>
-          </CardContent>
-        </Card>
+        <SkillCard
+          title="Tools & Technologies"
+          icon="mdi:tools"
+          icon-color="text-green-500"
+          :items="skills.tools"
+          type="badge"
+        />
 
-        <Card>
-          <CardHeader>
-            <CardTitle class="flex items-center gap-2 text-2xl">
-              <iconify-icon icon="mdi:rocket-launch" class="text-blue-500" />
-              Best Practices
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul class="space-y-2">
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>Performance Optimization</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>Accessibility (a11y)</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>Responsive Design</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>SEO Optimization</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+        <SkillCard
+          title="Best Practices"
+          icon="mdi:rocket-launch"
+          icon-color="text-blue-500"
+          :items="skills.practices"
+          type="list"
+        />
 
-        <Card>
-          <CardHeader>
-            <CardTitle class="flex items-center gap-2 text-2xl">
-              <iconify-icon icon="mdi:account-group" class="text-purple-500" />
-              Soft Skills
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul class="space-y-2">
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>Agile/Scrum Methodology</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>Team Collaboration</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>Problem Solving</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <iconify-icon icon="mdi:check" class="text-green-500" />
-                <span>Code Review</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+        <SkillCard
+          title="Soft Skills"
+          icon="mdi:account-group"
+          icon-color="text-purple-500"
+          :items="skills.soft"
+          type="list"
+        />
       </div>
     </div>
     <Separator class="my-8" />
     <div id="contact" class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20">
-      <h2 class="text-5xl font-bold mb-4 flex items-center gap-4">
-        <iconify-icon icon="mdi:email" class="inline-block mr-2 text-yellow-500" />
-        <span>Get In Touch</span>
-      </h2>
+      <SectionHeader icon="mdi:email" title="Get In Touch" />
 
       <Card class="mt-12 bg-gradient-to-r from-yellow-500/10 to-green-500/10 border-yellow-500/20">
         <CardContent class="py-12">
@@ -615,85 +549,16 @@ const workExperiences: workExperience[] = [
           </p>
 
           <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <Card>
-              <CardContent class="p-6">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center"
-                  >
-                    <iconify-icon icon="mdi:email" class="text-2xl text-yellow-500" />
-                  </div>
-                  <div>
-                    <p class="font-semibold text-lg">Email</p>
-                    <a href="mailto:mirkobosetti@example.com" class="text-blue-500 hover:underline">
-                      mirkobosetti@example.com
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent class="p-6">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"
-                  >
-                    <iconify-icon icon="mdi:linkedin" class="text-2xl text-blue-500" />
-                  </div>
-                  <div>
-                    <p class="font-semibold text-lg">LinkedIn</p>
-                    <a
-                      href="https://www.linkedin.com/in/mirkobosetti"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-blue-500 hover:underline"
-                    >
-                      linkedin.com/in/mirkobosetti
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent class="p-6">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center"
-                  >
-                    <iconify-icon icon="mdi:github" class="text-2xl text-purple-500" />
-                  </div>
-                  <div>
-                    <p class="font-semibold text-lg">GitHub</p>
-                    <a
-                      href="https://github.com/mirkobosetti"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-blue-500 hover:underline"
-                    >
-                      github.com/mirkobosetti
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent class="p-6">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center"
-                  >
-                    <iconify-icon icon="mdi:map-marker" class="text-2xl text-green-500" />
-                  </div>
-                  <div>
-                    <p class="font-semibold text-lg">Location</p>
-                    <p class="text-muted-foreground">Milan, Italy</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <ContactCard
+              v-for="contact in contacts"
+              :key="contact.title"
+              :icon="contact.icon"
+              :icon-color="contact.iconColor"
+              :title="contact.title"
+              :value="contact.value"
+              :href="contact.href"
+              :is-external="contact.isExternal"
+            />
           </div>
 
           <div class="flex flex-wrap justify-center gap-4 mt-8">

@@ -1,50 +1,30 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface Props {
+  slug: string
+  title: string
+  description: string
+  image: string
+  technologies: string[]
+}
+
+defineProps<Props>()
+</script>
 
 <template>
-  <div class="project-card"></div>
-  <img src="https://via.placeholder.com/400x250" alt="Project thumbnail" class="project-image" />
-  <div class="project-content">
-    <h3 class="project-title">Project Title</h3>
-    <p class="project-description">
-      This is a sample project description that explains what the project is about and its main
-      features or objectives.
-    </p>
-    <div class="badges">
-      <Badge>Badge</Badge>
-      <Badge>Badge</Badge>
-      <Badge>Badge</Badge>
-    </div>
-  </div>
-
-  <Card>
-    <CardHeader>
-      <CardTitle>Card Title</CardTitle>
-      <CardDescription>Card Description</CardDescription>
-    </CardHeader>
-    <CardContent>
-      Card Content
-
-      <Stepper>
-        <StepperItem :step="1">
-          <StepperTrigger>
-            <StepperIndicator>1</StepperIndicator>
-            <StepperTitle>Step 1</StepperTitle>
-            <StepperDescription>This is the first step</StepperDescription>
-          </StepperTrigger>
-          <StepperSeparator />
-        </StepperItem>
-        <StepperItem :step="2">
-          <StepperTrigger>
-            <StepperIndicator>2</StepperIndicator>
-            <StepperTitle>Step 2</StepperTitle>
-            <StepperDescription>This is the second step</StepperDescription>
-          </StepperTrigger>
-        </StepperItem>
-      </Stepper>
-    </CardContent>
-    <CardFooter>
-      Card Footer
-      <Progress :model-value="33" />
-    </CardFooter>
+  <Card class="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+    <RouterLink :to="`/projects/${slug}`">
+      <img :src="image" :alt="title" class="w-full h-48 object-cover" />
+      <CardHeader>
+        <CardTitle class="text-2xl">{{ title }}</CardTitle>
+        <CardDescription>{{ description }}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div class="flex flex-wrap gap-2">
+          <Badge v-for="tech in technologies" :key="tech" variant="secondary">
+            {{ tech }}
+          </Badge>
+        </div>
+      </CardContent>
+    </RouterLink>
   </Card>
 </template>
