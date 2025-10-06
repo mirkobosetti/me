@@ -13,40 +13,68 @@ const scrollToSection = (sectionId: string) => {
   >
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuLink href="/#experiences" @click.prevent="scrollToSection('experiences')">
-          <p class="text-xl hover:text-yellow-500 transition-colors cursor-pointer">Experiences</p>
+        <NavigationMenuLink
+          href="/#experiences"
+          @click.prevent="scrollToSection('experiences')"
+          class="group"
+        >
+          <p class="text-xl group-hover:text-yellow-500 transition-colors cursor-pointer">
+            Experiences
+          </p>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
 
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuLink href="/#education" @click.prevent="scrollToSection('education')">
-          <p class="text-xl hover:text-yellow-500 transition-colors cursor-pointer">Education</p>
+        <NavigationMenuLink
+          href="/#education"
+          @click.prevent="scrollToSection('education')"
+          class="group"
+        >
+          <p class="text-xl group-hover:text-yellow-500 transition-colors cursor-pointer">
+            Education
+          </p>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
 
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuLink href="/#projects" @click.prevent="scrollToSection('projects')">
-          <p class="text-xl hover:text-yellow-500 transition-colors cursor-pointer">Projects</p>
+        <NavigationMenuLink
+          href="/#projects"
+          @click.prevent="scrollToSection('projects')"
+          class="group"
+        >
+          <p class="text-xl group-hover:text-yellow-500 transition-colors cursor-pointer">
+            Projects
+          </p>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
 
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuLink href="/#skills" @click.prevent="scrollToSection('skills')">
-          <p class="text-xl hover:text-yellow-500 transition-colors cursor-pointer">Skills</p>
+        <NavigationMenuLink
+          href="/#skills"
+          @click.prevent="scrollToSection('skills')"
+          class="group"
+        >
+          <p class="text-xl group-hover:text-yellow-500 transition-colors cursor-pointer">Skills</p>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>
 
     <NavigationMenuList>
       <NavigationMenuItem>
-        <NavigationMenuLink href="/#contact" @click.prevent="scrollToSection('contact')">
-          <p class="text-xl hover:text-yellow-500 transition-colors cursor-pointer">Contact</p>
+        <NavigationMenuLink
+          href="/#contact"
+          @click.prevent="scrollToSection('contact')"
+          class="group"
+        >
+          <p class="text-xl group-hover:text-yellow-500 transition-colors cursor-pointer">
+            Contact
+          </p>
         </NavigationMenuLink>
       </NavigationMenuItem>
     </NavigationMenuList>

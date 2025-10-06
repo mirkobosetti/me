@@ -127,10 +127,10 @@ useMeta({
         The work experience "{{ slug }}" could not be found.
       </p>
       <Button as-child variant="default" size="lg">
-        <a href="/">
+        <RouterLink to="/">
           <iconify-icon icon="mdi:arrow-left" class="mr-2" />
           Back to Home
-        </a>
+        </RouterLink>
       </Button>
     </div>
 
@@ -139,10 +139,10 @@ useMeta({
       <!-- Header Section -->
       <div class="mb-12">
         <Button as-child variant="ghost" size="sm" class="mb-6">
-          <a href="/" class="flex items-center gap-2">
+          <RouterLink to="/" class="flex items-center gap-2">
             <iconify-icon icon="mdi:arrow-left" />
             Back to Home
-          </a>
+          </RouterLink>
         </Button>
 
         <div class="flex flex-col md:flex-row items-start md:items-center gap-8 mb-6">

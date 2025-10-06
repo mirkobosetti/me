@@ -345,13 +345,13 @@ const workExperiences: workExperience[] = [
               <!-- View Details Button -->
               <div class="mt-8">
                 <Button as-child variant="default" size="lg">
-                  <a
-                    :href="`/experiences/${step.company.name.toLowerCase()}`"
+                  <RouterLink
+                    :to="`/experiences/${step.company.name.toLowerCase()}`"
                     class="flex items-center gap-2"
                   >
                     <iconify-icon icon="mdi:arrow-right" />
                     View Full Details
-                  </a>
+                  </RouterLink>
                 </Button>
               </div>
             </StepperDescription>
@@ -427,7 +427,7 @@ const workExperiences: workExperience[] = [
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         <Card class="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-          <a href="/projects/portfolio-website">
+          <RouterLink to="/projects/portfolio-website">
             <img
               src="https://via.placeholder.com/400x250"
               alt="Portfolio Website"
@@ -444,11 +444,11 @@ const workExperiences: workExperience[] = [
                 <Badge variant="secondary">Tailwind CSS</Badge>
               </div>
             </CardContent>
-          </a>
+          </RouterLink>
         </Card>
 
         <Card class="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-          <a href="/projects/task-manager">
+          <RouterLink to="/projects/task-manager">
             <img
               src="https://via.placeholder.com/400x250"
               alt="Task Manager"
@@ -465,11 +465,11 @@ const workExperiences: workExperience[] = [
                 <Badge variant="secondary">Pinia</Badge>
               </div>
             </CardContent>
-          </a>
+          </RouterLink>
         </Card>
 
         <Card class="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
-          <a href="/projects/ecommerce-platform">
+          <RouterLink to="/projects/ecommerce-platform">
             <img
               src="https://via.placeholder.com/400x250"
               alt="E-Commerce Platform"
@@ -486,7 +486,7 @@ const workExperiences: workExperience[] = [
                 <Badge variant="secondary">MongoDB</Badge>
               </div>
             </CardContent>
-          </a>
+          </RouterLink>
         </Card>
       </div>
     </div>

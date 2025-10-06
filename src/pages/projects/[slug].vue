@@ -98,20 +98,20 @@ useMeta({
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Project Not Found</h1>
       <p class="text-xl text-muted-foreground mb-8">The project "{{ slug }}" could not be found.</p>
       <Button as-child variant="default" size="lg">
-        <a href="/">
+        <RouterLink to="/">
           <iconify-icon icon="mdi:arrow-left" class="mr-2" />
           Back to Home
-        </a>
+        </RouterLink>
       </Button>
     </div>
 
     <div v-else class="max-w-6xl mx-auto">
       <div class="mb-12">
         <Button as-child variant="ghost" size="sm" class="mb-6">
-          <a href="/" class="flex items-center gap-2">
+          <RouterLink to="/" class="flex items-center gap-2">
             <iconify-icon icon="mdi:arrow-left" />
             Back to Home
-          </a>
+          </RouterLink>
         </Button>
 
         <div class="mb-8">
@@ -232,10 +232,10 @@ useMeta({
                 Get in Touch
               </Button>
               <Button as-child size="lg" variant="outline">
-                <a href="/">
+                <RouterLink to="/">
                   <iconify-icon icon="mdi:view-grid" class="mr-2 text-xl" />
                   View More Projects
-                </a>
+                </RouterLink>
               </Button>
             </div>
           </CardContent>
