@@ -340,7 +340,7 @@ useMeta({
           :slug="project.slug"
           :title="project.title"
           :description="project.description"
-          :image="project.image"
+          :image="project.image ?? ''"
           :technologies="project.technologies"
         />
       </div>
