@@ -412,17 +412,22 @@ useMeta({
           </div>
 
           <div class="flex flex-wrap justify-center gap-3 md:gap-4 mt-6 md:mt-8">
-            <Button size="default" class="md:size-lg text-sm md:text-lg px-4 md:px-6">
-              <iconify-icon icon="mdi:email-send" class="mr-2 text-lg md:text-xl" />
-              Send Message
+            <Button as-child size="default" class="md:size-lg text-sm md:text-lg px-4 md:px-6">
+              <a :href="`mailto:${socialLinks.email}`">
+                <iconify-icon icon="mdi:email-send" class="mr-2 text-lg md:text-xl" />
+                Send Message
+              </a>
             </Button>
             <Button
+              as-child
               variant="outline"
               size="default"
               class="md:size-lg text-sm md:text-lg px-4 md:px-6"
             >
-              <iconify-icon icon="mdi:download" class="mr-2 text-lg md:text-xl" />
-              Download CV
+              <a href="/cv.pdf" download="Mirko_Bosetti_CV.pdf">
+                <iconify-icon icon="mdi:download" class="mr-2 text-lg md:text-xl" />
+                Download CV
+              </a>
             </Button>
           </div>
         </CardContent>

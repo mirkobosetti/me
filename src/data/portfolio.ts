@@ -274,7 +274,7 @@ export const skills = {
 export const socialLinks = {
   github: 'https://github.com/mirkobosetti',
   linkedin: 'https://www.linkedin.com/in/mirkobosetti',
-  email: 'mirkobosetti@example.com'
+  email: 'mirkobosetti1998@gmail.com'
 }
 
 export const contacts = [
