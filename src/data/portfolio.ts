@@ -218,11 +218,25 @@ export const education = {
 
 export const projects = [
   {
+    slug: 'kingmaker',
+    title: 'Kingmaker',
+    description: 'Pathfinder:Kingmaker - Game Assistant',
+    image: projectKingmaker,
+    technologies: ['Vue.js', 'Pinia', 'MongoDB', 'Desktop Only']
+  },
+  {
     slug: 'portfolio-website',
-    title: 'Portfolio Website',
-    description: 'Modern personal portfolio with Vue.js',
+    title: 'Portfolio',
+    description: 'This website written in 1 day',
     image: projectPortfolio,
     technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI', 'Vite']
+  },
+  {
+    slug: 'gestoide',
+    title: 'Gestoide',
+    description: 'Media Manager Web App',
+    image: null,
+    technologies: ['Angular', 'Express.js', 'MongoDB', 'Bootstrap']
   },
   {
     slug: 'drinkando',
@@ -230,13 +244,6 @@ export const projects = [
     description: 'Late Night Game with Friends',
     image: projectDrinkando,
     technologies: ['Vue.js', 'Pinia', 'Mobile Only']
-  },
-  {
-    slug: 'kingmaker',
-    title: 'Kingmaker',
-    description: 'Pathfinder:Kingmaker - Game Assistant',
-    image: projectKingmaker,
-    technologies: ['Vue.js', 'Pinia', 'MongoDB', 'Desktop Only']
   }
 ]
 
