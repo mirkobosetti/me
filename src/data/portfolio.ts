@@ -1,5 +1,5 @@
 import logoCving from '@/assets/images/logo_cving.png'
-import logoOripan from '@/assets/images/logo_oripan.jpeg'
+import logoOripan from '@/assets/images/logo_oripan.png'
 import avatar from '@/assets/images/avatar.png'
 import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
