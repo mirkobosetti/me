@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <NavigationMenu class="p-4 flex items-center justify-center gap-4 max-w-screen">
+  <NavigationMenu class="p-4 flex items-center justify-center gap-4 max-w-screen h-16">
     <NavigationMenuList>
       <NavigationMenuItem>
         <NavigationMenuLink href="/docs/introduction">
