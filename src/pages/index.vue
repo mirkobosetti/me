@@ -17,15 +17,20 @@ useMeta({
 
 <template>
   <div class="flex flex-col items-start justify-center min-h-screen py-2 md:items-center px-4">
-    <div class="min-h-[calc(100vh-4rem)] flex flex-col items-start justify-center">
-      <h1 class="text-2xl md:text-9xl font-bold">
-        {{ personalInfo.hero.greeting }}
-        <span class="text-yellow-500">{{ personalInfo.hero.name }}</span
-        >!
+    <div
+      class="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center text-center w-full"
+    >
+      <h1
+        class="text-5xl md:text-9xl font-bold leading-tight flex flex-wrap justify-center md:gap-20"
+      >
+        <span>{{ personalInfo.hero.greeting }}</span>
+        <span class="text-yellow-500">{{ personalInfo.hero.name }}!</span>
       </h1>
-      <p class="text-lg md:text-6xl mt-8 flex items-center gap-4">
-        <span>{{ personalInfo.hero.subtitle }}</span>
-        <iconify-icon :icon="personalInfo.hero.icon" class="text-green-500" />
+      <p
+        class="text-3xl md:text-6xl mt-8 flex flex-col md:flex-row items-center md:items-center gap-2 md:gap-4 leading-tight"
+      >
+        <span class="block md:inline">{{ personalInfo.hero.subtitle }}</span>
+        <iconify-icon :icon="personalInfo.hero.icon" class="text-green-500 text-4xl md:text-6xl" />
       </p>
     </div>
 
@@ -189,49 +194,57 @@ useMeta({
       <SectionHeader icon="mdi:briefcase" title="Work Experience" />
       <Stepper
         orientation="vertical"
-        class="mx-auto flex w-full flex-col justify-start gap-20 mt-24"
+        class="mx-auto flex w-full flex-col justify-start gap-10 md:gap-20 mt-12 md:mt-24"
       >
         <StepperItem
           v-for="step in workExperiences"
           :key="step.step"
-          class="relative flex w-full items-start gap-6"
+          class="relative flex w-full items-start gap-3 md:gap-6"
           :step="step.step"
         >
           <StepperSeparator
-            class="absolute left-[48px] top-[38px] block w-0.5 shrink-0 rounded-full bg-primary"
-            :class="step.step === 1 ? 'h-[calc(100%+3rem)]' : 'h-[calc(100%-2rem)]'"
+            class="absolute left-[32px] md:left-[48px] top-[38px] block w-0.5 shrink-0 rounded-full bg-primary"
+            :class="
+              step.step === 1
+                ? 'h-[calc(100%+1rem)] md:h-[calc(100%+3rem)]'
+                : 'h-[calc(100%-2rem)] md:h-[calc(100%-2rem)]'
+            "
           />
 
-          <StepperTrigger as-child class="min-w-[6rem]">
-            <div class="z-10 w-20 h-full bg-muted">
+          <StepperTrigger as-child class="min-w-[4rem] md:min-w-[6rem]">
+            <div class="z-10 w-16 md:w-20 h-full bg-muted">
               <img :src="step.logo" alt="Company Logo" />
             </div>
           </StepperTrigger>
 
-          <div class="flex flex-col gap-1">
-            <StepperTitle class="font-semibold transition text-4xl">
+          <div class="flex flex-col gap-1 flex-1 min-w-0">
+            <StepperTitle class="font-semibold transition text-xl md:text-4xl">
               {{ step.title }}
             </StepperTitle>
-            <StepperDescription class="text-3xl">
-              <div class="flex gap-2">
-                <span>{{ step.company.name }}</span>
+            <StepperDescription class="text-base md:text-3xl">
+              <div class="flex gap-2 items-center">
+                <span class="text-lg md:text-3xl">{{ step.company.name }}</span>
                 <a
                   :href="step.company.linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="text-blue-500"
                 >
-                  <iconify-icon icon="mdi:linkedin" class="mt-1" />
+                  <iconify-icon icon="mdi:linkedin" class="text-lg md:text-2xl" />
                 </a>
               </div>
 
-              <p class="text-xl text-red-400">{{ step.period }}</p>
-              <p class="text-2xl">{{ step.company.description }}</p>
+              <p class="text-sm md:text-xl text-red-400 mt-1">{{ step.period }}</p>
 
-              <p class="mt-12">{{ step.description }}</p>
+              <!-- Desktop only content -->
+              <p class="hidden md:block text-2xl mt-2">{{ step.company.description }}</p>
+              <p class="hidden md:block mt-12">{{ step.description }}</p>
 
-              <!-- Contributions (if any) -->
-              <div v-if="step.contributions && step.contributions.length" class="mt-4">
+              <!-- Contributions (if any) - Desktop only -->
+              <div
+                v-if="step.contributions && step.contributions.length"
+                class="mt-4 hidden md:block"
+              >
                 <h3 class="text-2xl font-semibold mb-2">Key Contributions:</h3>
                 <ul class="list-disc ml-6">
                   <li v-for="(contribution, index) in step.contributions" :key="index">
@@ -241,14 +254,20 @@ useMeta({
               </div>
 
               <!-- View Details Button -->
-              <div class="mt-8">
-                <Button as-child variant="default" size="lg">
+              <div class="mt-8 md:mt-8">
+                <Button
+                  as-child
+                  variant="default"
+                  size="sm"
+                  class="md:size-lg text-sm md:text-base"
+                >
                   <RouterLink
                     :to="`/experiences/${step.company.name.toLowerCase()}`"
                     class="flex items-center gap-2"
                   >
                     <iconify-icon icon="mdi:arrow-right" />
-                    View Full Details
+                    <span class="hidden md:inline">View Full Details</span>
+                    <span class="md:hidden">Details</span>
                   </RouterLink>
                 </Button>
               </div>
@@ -265,18 +284,25 @@ useMeta({
 
       <Card class="mt-12">
         <CardHeader>
-          <div class="flex items-start justify-between">
-            <div>
-              <CardTitle class="text-3xl mb-2">{{ education.degree.title }}</CardTitle>
-              <CardDescription class="text-xl">{{ education.degree.institution }}</CardDescription>
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+              <CardTitle class="text-2xl md:text-3xl mb-2">{{ education.degree.title }}</CardTitle>
+              <CardDescription class="text-base md:text-xl">{{
+                education.degree.institution
+              }}</CardDescription>
+              <p class="text-sm text-muted-foreground mt-2 md:hidden">
+                {{ education.degree.period }}
+              </p>
             </div>
-            <Badge variant="secondary" class="text-base px-3 py-1">{{
-              education.degree.period
-            }}</Badge>
+            <Badge
+              variant="secondary"
+              class="hidden md:flex text-base px-3 py-1 whitespace-nowrap"
+              >{{ education.degree.period }}</Badge
+            >
           </div>
         </CardHeader>
         <CardContent>
-          <p class="text-lg">{{ education.degree.description }}</p>
+          <p class="text-base md:text-lg">{{ education.degree.description }}</p>
         </CardContent>
       </Card>
 
@@ -366,13 +392,13 @@ useMeta({
       <SectionHeader icon="mdi:email" title="Get In Touch" />
 
       <Card class="mt-12 bg-gradient-to-r from-yellow-500/10 to-green-500/10 border-yellow-500/20">
-        <CardContent class="py-12">
-          <p class="text-2xl mb-8 text-center">
+        <CardContent class="py-6 md:py-12 px-4 md:px-6">
+          <p class="text-base md:text-2xl mb-6 md:mb-8 text-center">
             I'm always open to discussing new projects, creative ideas, or opportunities to be part
             of your vision.
           </p>
 
-          <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="grid md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
             <ContactCard
               v-for="contact in contacts"
               :key="contact.title"
@@ -385,13 +411,17 @@ useMeta({
             />
           </div>
 
-          <div class="flex flex-wrap justify-center gap-4 mt-8">
-            <Button size="lg" variant="default" class="text-lg px-6">
-              <iconify-icon icon="mdi:email-send" class="mr-2 text-xl" />
+          <div class="flex flex-wrap justify-center gap-3 md:gap-4 mt-6 md:mt-8">
+            <Button size="default" class="md:size-lg text-sm md:text-lg px-4 md:px-6">
+              <iconify-icon icon="mdi:email-send" class="mr-2 text-lg md:text-xl" />
               Send Message
             </Button>
-            <Button size="lg" variant="outline" class="text-lg px-6">
-              <iconify-icon icon="mdi:download" class="mr-2 text-xl" />
+            <Button
+              variant="outline"
+              size="default"
+              class="md:size-lg text-sm md:text-lg px-4 md:px-6"
+            >
+              <iconify-icon icon="mdi:download" class="mr-2 text-lg md:text-xl" />
               Download CV
             </Button>
           </div>
