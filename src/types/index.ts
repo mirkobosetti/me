@@ -2,6 +2,11 @@ export type contribution = {
   description: string
 }
 
+export type milestone = {
+  title: string
+  description: string
+}
+
 export type workExperience = {
   step: number
   company: company
@@ -12,6 +17,8 @@ export type workExperience = {
   title: string
   description: string
   contributions?: contribution[]
+  technologies?: string[]
+  milestones?: milestone[]
 }
 
 export type company = {

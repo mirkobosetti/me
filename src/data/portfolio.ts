@@ -106,6 +106,39 @@ export const workExperiences: workExperience[] = [
         description:
           'Built an internal video interview platform from scratch similar to Google Meet using Vue3 WebRTC and socket (both FE and BE in express.js) and enabling seamless video calls between candidates and recruiters.'
       }
+    ],
+    technologies: [
+      'Vue.js 2/3',
+      'Nuxt.js 2/3',
+      'TypeScript',
+      'Tailwind CSS',
+      'WebRTC',
+      'Socket.io',
+      'Express.js',
+      'Vite',
+      'Pinia',
+      'Vuex',
+      'Vue Router',
+      'Git',
+      'REST APIs',
+      'HTML5',
+      'CSS3'
+    ],
+    milestones: [
+      {
+        title: 'Back-Office Dashboard Launch',
+        description:
+          'Successfully launched comprehensive dashboard improving internal workflow efficiency'
+      },
+      {
+        title: 'Video Interview Platform',
+        description:
+          'Built complete video interview platform enabling seamless calls between candidates and recruiters'
+      },
+      {
+        title: 'Performance Optimization',
+        description: 'Improved SEO and performance on the main candidate-facing website'
+      }
     ]
   },
   {
@@ -136,6 +169,34 @@ export const workExperiences: workExperience[] = [
       {
         description:
           'Complete redesign of a warehouse management system for Falcon and Zebra barcode readers, building a lightweight, optimized web application for mobile scanning devices.'
+      }
+    ],
+    technologies: [
+      'Vue.js',
+      'jQuery',
+      'ASP.NET Core',
+      'C#',
+      'DevExtreme',
+      'SQL Server',
+      'Visual Studio',
+      'Git',
+      'HTML5',
+      'CSS3',
+      'JavaScript',
+      'Bootstrap'
+    ],
+    milestones: [
+      {
+        title: 'Legacy Migration',
+        description: 'Converted old Visual Basic applications to modern web applications'
+      },
+      {
+        title: 'Product Line Software',
+        description: 'Developed new version using Vue2 improving user experience'
+      },
+      {
+        title: 'Warehouse System Redesign',
+        description: 'Complete redesign for mobile scanning devices with optimized performance'
       }
     ]
   }
