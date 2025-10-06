@@ -1,89 +1,11 @@
 <script setup lang="ts">
+import { projectsDetailData } from '../../data/projectsDetail'
+
 const { slug } = useRoute('/projects/[slug]').params
-
-interface Project {
-  name: string
-  tagline: string
-  description: string
-  image: string
-  technologies: string[]
-  features: string[]
-  links?: {
-    live?: string
-    github?: string
-    demo?: string
-  }
-  category: string
-  date: string
-}
-
-const projectsData: Record<string, Project> = {
-  'portfolio-website': {
-    name: 'Portfolio Website',
-    tagline: 'Personal portfolio showcasing my work and skills',
-    description:
-      'A modern, responsive portfolio website built with Vue.js and Tailwind CSS. Features smooth animations, dark mode support, and optimized performance.',
-    image: 'https://via.placeholder.com/800x400',
-    category: 'Web Development',
-    date: '2024',
-    technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS', 'Vite'],
-    features: [
-      'Fully responsive design that works on all devices',
-      'Dark mode support with smooth transitions',
-      'Interactive project showcase with filtering',
-      'Optimized performance with lazy loading',
-      'SEO-friendly structure',
-      'Accessible to all users'
-    ],
-    links: {
-      live: 'https://example.com',
-      github: 'https://github.com/mirkobosetti/portfolio'
-    }
-  },
-  'task-manager': {
-    name: 'Task Manager App',
-    tagline: 'Efficient task management for teams',
-    description:
-      'A collaborative task management application that helps teams organize, prioritize, and track their work. Built with Vue.js and integrates with popular productivity tools.',
-    image: 'https://via.placeholder.com/800x400',
-    category: 'Web Application',
-    date: '2023',
-    technologies: ['Vue.js', 'Nuxt.js', 'Pinia', 'PostgreSQL', 'Node.js'],
-    features: [
-      'Real-time collaboration with team members',
-      'Drag-and-drop task organization',
-      'Priority levels and due dates',
-      'File attachments and comments',
-      'Email notifications',
-      'Advanced filtering and search'
-    ],
-    links: {
-      demo: 'https://demo.example.com'
-    }
-  },
-  'ecommerce-platform': {
-    name: 'E-Commerce Platform',
-    tagline: 'Modern online shopping experience',
-    description:
-      'A full-featured e-commerce platform with shopping cart, payment integration, and admin dashboard. Designed for scalability and user experience.',
-    image: 'https://via.placeholder.com/800x400',
-    category: 'E-Commerce',
-    date: '2023',
-    technologies: ['Vue.js', 'Stripe', 'REST API', 'Tailwind CSS', 'MongoDB'],
-    features: [
-      'Product catalog with search and filtering',
-      'Shopping cart and wishlist',
-      'Secure payment processing with Stripe',
-      'User authentication and profiles',
-      'Order tracking and history',
-      'Admin dashboard for inventory management'
-    ]
-  }
-}
 
 const project = computed(() => {
   const key = slug.toString().toLowerCase()
-  return projectsData[key] || null
+  return projectsDetailData[key] || null
 })
 
 useMeta({
@@ -92,7 +14,7 @@ useMeta({
 </script>
 
 <template>
-  <div class="min-h-screen py-12 px-4 md:px-8 lg:px-16">
+  <div class="min-h-screen px-4 md:px-8 lg:px-16 pt-4 pb-8">
     <div v-if="!project" class="max-w-4xl mx-auto text-center py-32">
       <iconify-icon icon="mdi:folder-off-outline" class="text-9xl text-muted-foreground mb-8" />
       <h1 class="text-4xl md:text-5xl font-bold mb-4">Project Not Found</h1>
@@ -106,7 +28,7 @@ useMeta({
     </div>
 
     <div v-else class="max-w-6xl mx-auto">
-      <div class="mb-12">
+      <div class="mb-6">
         <Button as-child variant="ghost" size="sm" class="mb-6">
           <RouterLink to="/" class="flex items-center gap-2">
             <iconify-icon icon="mdi:arrow-left" />
@@ -114,7 +36,7 @@ useMeta({
           </RouterLink>
         </Button>
 
-        <div class="mb-8">
+        <div class="mb-6">
           <div class="flex flex-wrap items-center gap-4 mb-4">
             <Badge variant="secondary" class="text-base px-3 py-1">
               {{ project.category }}
@@ -128,7 +50,7 @@ useMeta({
           <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ project.name }}</h1>
           <p class="text-2xl text-muted-foreground mb-6">{{ project.tagline }}</p>
 
-          <div v-if="project.links" class="flex flex-wrap gap-4">
+          <div v-if="project.links" class="flex flex-wrap gap-4 mb-8">
             <Button v-if="project.links.live" as-child size="lg" variant="default">
               <a :href="project.links.live" target="_blank" rel="noopener noreferrer">
                 <iconify-icon icon="mdi:open-in-new" class="mr-2" />
@@ -149,23 +71,32 @@ useMeta({
             </Button>
           </div>
         </div>
-
-        <Card class="overflow-hidden">
-          <img :src="project.image" :alt="project.name" class="w-full h-auto object-cover" />
-        </Card>
       </div>
 
-      <Card class="mb-8">
-        <CardHeader>
-          <CardTitle class="flex items-center gap-3 text-3xl">
-            <iconify-icon icon="mdi:information" class="text-yellow-500" />
-            About This Project
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p class="text-lg leading-relaxed">{{ project.description }}</p>
-        </CardContent>
-      </Card>
+      <!-- Image and About section - responsive layout -->
+      <div class="grid md:grid-cols-2 gap-8 mb-8 mt-6">
+        <!-- About This Project - Left on large screens, top on mobile -->
+        <Card>
+          <CardHeader>
+            <CardTitle class="flex items-center gap-3 text-3xl">
+              <iconify-icon icon="mdi:information" class="text-yellow-500" />
+              About This Project
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p class="text-lg leading-relaxed">{{ project.description }}</p>
+          </CardContent>
+        </Card>
+
+        <!-- Project Image - Right on large screens, bottom on mobile -->
+        <Card class="overflow-hidden">
+          <img
+            :src="project.image"
+            :alt="project.name"
+            class="w-full h-full object-cover rounded-lg"
+          />
+        </Card>
+      </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
         <div class="md:col-span-2">
@@ -219,7 +150,7 @@ useMeta({
         </div>
       </div>
 
-      <div class="mt-12 text-center">
+      <div class="mt-8 text-center">
         <Card class="bg-gradient-to-r from-yellow-500/10 to-green-500/10 border-yellow-500/20">
           <CardContent class="py-12">
             <h2 class="text-3xl font-bold mb-4">Interested in a similar project?</h2>
@@ -232,7 +163,7 @@ useMeta({
                 Get in Touch
               </Button>
               <Button as-child size="lg" variant="outline">
-                <RouterLink to="/">
+                <RouterLink to="/#projects">
                   <iconify-icon icon="mdi:view-grid" class="mr-2 text-xl" />
                   View More Projects
                 </RouterLink>

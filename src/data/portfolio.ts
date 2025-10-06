@@ -1,6 +1,9 @@
 import logoCving from '@/assets/images/logo_cving.png'
 import logoOripan from '@/assets/images/logo_oripan.jpeg'
 import avatar from '@/assets/images/avatar.png'
+import projectPortfolio from '@/assets/images/project_portfolio.png'
+import projectDrinkando from '@/assets/images/project_drinkando.png'
+import projectKingmaker from '@/assets/images/project_kingmaker.png'
 import type { workExperience } from '../types'
 
 export const personalInfo = {
@@ -157,22 +160,22 @@ export const projects = [
     slug: 'portfolio-website',
     title: 'Portfolio Website',
     description: 'Modern personal portfolio with Vue.js',
-    image: 'https://via.placeholder.com/400x250',
+    image: projectPortfolio,
     technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI', 'Vite']
   },
   {
     slug: 'drinkando',
     title: 'Drinkando',
     description: 'Late Night Game with Friends',
-    image: 'https://via.placeholder.com/400x250',
-    technologies: ['Vue.js', 'Pinia']
+    image: projectDrinkando,
+    technologies: ['Vue.js', 'Pinia', 'Mobile Only']
   },
   {
     slug: 'kingmaker',
     title: 'Kingmaker',
     description: 'Pathfinder:Kingmaker - Game Assistant',
-    image: 'https://via.placeholder.com/400x250',
-    technologies: ['Vue.js', 'Pinia', 'MongoDB']
+    image: projectKingmaker,
+    technologies: ['Vue.js', 'Pinia', 'MongoDB', 'Desktop Only']
   }
 ]
 

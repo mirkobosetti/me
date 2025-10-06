@@ -183,7 +183,7 @@ useMeta({
 
     <div
       id="experiences"
-      class="min-h-[50vh] my-16 max-w-3xl scroll-mt-20"
+      class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20"
       v-if="workExperiences.length"
     >
       <SectionHeader icon="mdi:briefcase" title="Work Experience" />
@@ -259,6 +259,7 @@ useMeta({
     </div>
 
     <Separator class="my-8" />
+
     <div id="education" class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20">
       <SectionHeader icon="mdi:school" title="Education" />
 
@@ -296,8 +297,10 @@ useMeta({
         </CardContent>
       </Card>
     </div>
+
     <Separator class="my-8" />
-    <div id="projects" class="min-h-[50vh] my-16 scroll-mt-20">
+
+    <div id="projects" class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20">
       <SectionHeader icon="mdi:puzzle-heart" title="Featured Projects" />
       <p class="text-2xl max-w-3xl mt-8 mb-12">
         Here are some of the projects I've worked on, showcasing my skills in modern web
@@ -316,7 +319,9 @@ useMeta({
         />
       </div>
     </div>
+
     <Separator class="my-8" />
+
     <div id="skills" class="min-h-[50vh] my-16 max-w-5xl scroll-mt-20">
       <SectionHeader icon="mdi:lightbulb-on" title="Skills & Expertise" />
 
@@ -354,7 +359,9 @@ useMeta({
         />
       </div>
     </div>
+
     <Separator class="my-8" />
+
     <div id="contact" class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20">
       <SectionHeader icon="mdi:email" title="Get In Touch" />
 
