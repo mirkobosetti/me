@@ -1,189 +1,31 @@
 <script setup lang="ts">
-import logoCving from '@/assets/images/logo_cving.png'
-import logoOripan from '@/assets/images/logo_oripan.jpeg'
-import avatar from '@/assets/images/avatar.png'
-import type { workExperience } from '../types'
+import {
+  personalInfo,
+  workExperiences,
+  education,
+  projects,
+  skills,
+  contacts,
+  socialLinks,
+  footer
+} from '../data/portfolio'
 
 useMeta({
-  title: 'Mirko Bosetti | Home'
+  title: `${personalInfo.name} | Home`
 })
-
-const workExperiences: workExperience[] = [
-  {
-    step: 1,
-    company: {
-      name: 'Cving',
-      location: 'Milan, Italy',
-      description:
-        'The first platform experience dedicated to the world of work, experience, entertainment, and career.',
-      linkedin: 'https://www.linkedin.com/company/cving/'
-    },
-    location: 'Milan, Italy',
-    remote: true,
-    logo: logoCving,
-    period: '02/2022 - Present',
-    title: 'Front-end Developer',
-    description: 'Working on building and maintaining web applications using Vue.js and Nuxt.js.',
-    contributions: [
-      {
-        description:
-          'Created a back-office dashboard using Vue3 and Tailwind CSS. Used by our company employees to manage recruiters, candidates, companies and their campaigns.'
-      },
-      {
-        description:
-          'Mantained and improved the website used by candidates (https://www.cving.com) using Nuxt2. Optimizing performance and SEO.'
-      },
-      {
-        description:
-          'Mantained the website used by recruiters (https://recruiter.cving.com) using vue2. Implemented new features and fixed bugs.'
-      },
-      {
-        description:
-          'Built an internal video interview platform from scratch similar to Google Meet using Vue3 WebRTC and socket (both FE and BE in express.js) and enabling seamless video calls between candidates and recruiters.'
-      }
-    ]
-  },
-  {
-    step: 2,
-    company: {
-      name: 'Oripan',
-      location: 'Tione di Trento, Italy',
-      description: 'A software company focused on enterprise solutions.',
-      linkedin: 'https://www.linkedin.com/company/oripan/'
-    },
-    location: 'Tione di Trento, Italy',
-    remote: false,
-    logo: logoOripan,
-    period: '08/2019 - 02/2022',
-    title: 'Software Developer',
-    description: 'Developed and maintained web applications using Java and Spring Boot.'
-  }
-]
-
-const projects = [
-  {
-    slug: 'portfolio-website',
-    title: 'Portfolio Website',
-    description: 'Modern personal portfolio with Vue.js',
-    image: 'https://via.placeholder.com/400x250',
-    technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS']
-  },
-  {
-    slug: 'task-manager',
-    title: 'Task Manager App',
-    description: 'Collaborative task management platform',
-    image: 'https://via.placeholder.com/400x250',
-    technologies: ['Vue.js', 'Nuxt.js', 'Pinia']
-  },
-  {
-    slug: 'ecommerce-platform',
-    title: 'E-Commerce Platform',
-    description: 'Full-featured online shopping experience',
-    image: 'https://via.placeholder.com/400x250',
-    technologies: ['Vue.js', 'Stripe', 'MongoDB']
-  }
-]
-
-const skills = {
-  frontend: [
-    'Vue.js',
-    'Nuxt.js',
-    'TypeScript',
-    'JavaScript',
-    'HTML5',
-    'CSS3',
-    'Tailwind CSS',
-    'Pinia',
-    'Vuex'
-  ],
-  tools: ['Git', 'Vite', 'WebRTC', 'Socket.io', 'REST APIs', 'Vitest', 'ESLint', 'npm/yarn'],
-  practices: [
-    'Performance Optimization',
-    'Accessibility (a11y)',
-    'Responsive Design',
-    'SEO Optimization'
-  ],
-  soft: ['Agile/Scrum Methodology', 'Team Collaboration', 'Problem Solving', 'Code Review']
-}
-
-const contacts = [
-  {
-    icon: 'mdi:email',
-    iconColor: 'text-yellow-500',
-    title: 'Email',
-    value: 'mirkobosetti@example.com',
-    href: 'mailto:mirkobosetti@example.com'
-  },
-  {
-    icon: 'mdi:linkedin',
-    iconColor: 'text-blue-500',
-    title: 'LinkedIn',
-    value: 'linkedin.com/in/mirkobosetti',
-    href: 'https://www.linkedin.com/in/mirkobosetti',
-    isExternal: true
-  },
-  {
-    icon: 'mdi:github',
-    iconColor: 'text-purple-500',
-    title: 'GitHub',
-    value: 'github.com/mirkobosetti',
-    href: 'https://github.com/mirkobosetti',
-    isExternal: true
-  },
-  {
-    icon: 'mdi:map-marker',
-    iconColor: 'text-green-500',
-    title: 'Location',
-    value: 'Milan, Italy'
-  }
-]
-
-const strengths = [
-  {
-    boldText: 'Problem Solver',
-    text: 'I approach challenges methodically and find elegant solutions'
-  },
-  { boldText: 'Team Player', text: 'Experience collaborating in agile environments' },
-  {
-    boldText: 'Quality Focused',
-    text: 'Strong believer in testing, code reviews, and documentation'
-  },
-  { boldText: 'Fast Learner', text: 'Quick to adapt to new technologies and frameworks' }
-]
-
-const hobbies = [
-  {
-    icon: 'mdi:book-open-variant',
-    text: 'Reading tech blogs and staying updated with web trends',
-    iconColor: 'text-yellow-500'
-  },
-  {
-    icon: 'mdi:code-braces-box',
-    text: 'Contributing to open source projects',
-    iconColor: 'text-blue-500'
-  },
-  {
-    icon: 'mdi:hiking',
-    text: 'Hiking and exploring the Italian Alps',
-    iconColor: 'text-green-500'
-  },
-  {
-    icon: 'mdi:gamepad-variant',
-    text: 'Gaming and UI/UX analysis in interactive media',
-    iconColor: 'text-purple-500'
-  }
-]
 </script>
 
 <template>
   <div class="flex flex-col items-start justify-center min-h-screen py-2 md:items-center px-4">
     <div class="min-h-[calc(100vh-4rem)] flex flex-col items-start justify-center">
       <h1 class="text-2xl md:text-9xl font-bold">
-        Hi, I'm <span class="text-yellow-500">MIRKO</span>!
+        {{ personalInfo.hero.greeting }}
+        <span class="text-yellow-500">{{ personalInfo.hero.name }}</span
+        >!
       </h1>
       <p class="text-lg md:text-6xl mt-8 flex items-center gap-4">
-        <span>I'm a Frontend Developer</span>
-        <iconify-icon icon="lucide:laptop" class="text-green-500" />
+        <span>{{ personalInfo.hero.subtitle }}</span>
+        <iconify-icon :icon="personalInfo.hero.icon" class="text-green-500" />
       </p>
     </div>
 
@@ -199,27 +41,31 @@ const hobbies = [
         <div class="md:col-span-1">
           <Card class="overflow-hidden">
             <div class="relative">
-              <img :src="avatar" alt="Mirko Bosetti" class="w-full h-auto object-cover" />
+              <img
+                :src="personalInfo.avatar"
+                :alt="personalInfo.name"
+                class="w-full h-auto object-cover"
+              />
               <div
                 class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4"
               >
-                <p class="text-white font-bold text-xl">Mirko Bosetti</p>
-                <p class="text-white/90 text-sm">Frontend Developer</p>
+                <p class="text-white font-bold text-xl">{{ personalInfo.name }}</p>
+                <p class="text-white/90 text-sm">{{ personalInfo.title }}</p>
               </div>
             </div>
             <CardContent class="p-6">
               <div class="space-y-3">
                 <div class="flex items-center gap-3">
                   <iconify-icon icon="mdi:map-marker" class="text-yellow-500 text-xl" />
-                  <span class="text-sm">Milan, Italy</span>
+                  <span class="text-sm">{{ personalInfo.location }}</span>
                 </div>
                 <div class="flex items-center gap-3">
                   <iconify-icon icon="mdi:briefcase" class="text-green-500 text-xl" />
-                  <span class="text-sm">6+ Years Experience</span>
+                  <span class="text-sm">{{ personalInfo.yearsExperience }} Years Experience</span>
                 </div>
                 <div class="flex items-center gap-3">
                   <iconify-icon icon="mdi:check-decagram" class="text-blue-500 text-xl" />
-                  <span class="text-sm">Available for Opportunities</span>
+                  <span class="text-sm">{{ personalInfo.availability }}</span>
                 </div>
               </div>
 
@@ -227,7 +73,7 @@ const hobbies = [
 
               <div class="flex flex-wrap gap-2">
                 <a
-                  href="https://github.com/mirkobosetti"
+                  :href="socialLinks.github"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="flex items-center gap-2 hover:text-yellow-500 transition"
@@ -235,7 +81,7 @@ const hobbies = [
                   <iconify-icon icon="mdi:github" class="text-2xl" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/mirkobosetti"
+                  :href="socialLinks.linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="flex items-center gap-2 hover:text-yellow-500 transition"
@@ -243,7 +89,7 @@ const hobbies = [
                   <iconify-icon icon="mdi:linkedin" class="text-2xl" />
                 </a>
                 <a
-                  href="mailto:mirkobosetti@example.com"
+                  :href="`mailto:${socialLinks.email}`"
                   class="flex items-center gap-2 hover:text-yellow-500 transition"
                 >
                   <iconify-icon icon="mdi:email" class="text-2xl" />
@@ -263,23 +109,11 @@ const hobbies = [
               </CardTitle>
             </CardHeader>
             <CardContent class="p-6 text-lg leading-relaxed space-y-4">
-              <p>
-                Frontend Developer with <strong>6+ years of experience</strong> specializing in
-                building modern, scalable web applications. Expert in
-                <strong>Vue.js ecosystem</strong> (Vue 2/3, Nuxt.js) with a strong focus on
-                performance optimization, user experience, and clean code architecture.
-              </p>
-              <p>
-                Currently working at <strong>Cving</strong>, where I've built critical features
-                including a comprehensive back-office dashboard, candidate platform, and a real-time
-                video interview system using <strong>WebRTC</strong> and <strong>Socket.io</strong>.
-              </p>
-              <p>
-                I'm passionate about creating
-                <strong>accessible, user-friendly</strong> applications that solve real problems. I
-                believe in continuous learning, best practices, and writing maintainable code that
-                teams can easily work with.
-              </p>
+              <p
+                v-for="(paragraph, index) in personalInfo.about.summary"
+                :key="index"
+                v-html="paragraph"
+              ></p>
             </CardContent>
           </Card>
 
@@ -294,7 +128,7 @@ const hobbies = [
               <CardContent class="p-6">
                 <ul class="space-y-2 text-base">
                   <InfoListItem
-                    v-for="strength in strengths"
+                    v-for="strength in personalInfo.about.strengths"
                     :key="strength.boldText"
                     icon="mdi:check-circle"
                     :bold-text="strength.boldText"
@@ -314,7 +148,7 @@ const hobbies = [
               <CardContent class="p-6">
                 <ul class="space-y-2 text-base">
                   <InfoListItem
-                    v-for="hobby in hobbies"
+                    v-for="hobby in personalInfo.about.hobbies"
                     :key="hobby.text"
                     :icon="hobby.icon"
                     :icon-color="hobby.iconColor"
@@ -333,14 +167,10 @@ const hobbies = [
                   class="text-yellow-500 text-3xl flex-shrink-0 mt-1"
                 />
                 <div>
-                  <p class="font-semibold text-lg mb-2">Open to Opportunities</p>
-                  <p class="text-base">
-                    I'm currently open to <strong>frontend roles</strong>,
-                    <strong>remote positions</strong>, and <strong>exciting projects</strong> where
-                    I can contribute my Vue.js expertise and grow as a developer. Particularly
-                    interested in <strong>product-focused companies</strong> and
-                    <strong>innovative startups</strong>.
+                  <p class="font-semibold text-lg mb-2">
+                    {{ personalInfo.about.opportunities.title }}
                   </p>
+                  <p class="text-base" v-html="personalInfo.about.opportunities.description"></p>
                 </div>
               </div>
             </CardContent>
@@ -368,8 +198,8 @@ const hobbies = [
           :step="step.step"
         >
           <StepperSeparator
-            v-if="step.step !== workExperiences.length"
-            class="absolute left-[48px] top-[38px] block h-[125%] w-0.5 shrink-0 rounded-full bg-primary"
+            class="absolute left-[48px] top-[38px] block w-0.5 shrink-0 rounded-full bg-primary"
+            :class="step.step === 1 ? 'h-[calc(100%+3rem)]' : 'h-[calc(100%-2rem)]'"
           />
 
           <StepperTrigger as-child class="min-w-[6rem]">
@@ -436,17 +266,16 @@ const hobbies = [
         <CardHeader>
           <div class="flex items-start justify-between">
             <div>
-              <CardTitle class="text-3xl mb-2">Computer Science Degree</CardTitle>
-              <CardDescription class="text-xl">University Name</CardDescription>
+              <CardTitle class="text-3xl mb-2">{{ education.degree.title }}</CardTitle>
+              <CardDescription class="text-xl">{{ education.degree.institution }}</CardDescription>
             </div>
-            <Badge variant="secondary" class="text-base px-3 py-1">2015 - 2019</Badge>
+            <Badge variant="secondary" class="text-base px-3 py-1">{{
+              education.degree.period
+            }}</Badge>
           </div>
         </CardHeader>
         <CardContent>
-          <p class="text-lg">
-            Focused on software engineering, web development, algorithms, and data structures.
-            Gained strong foundation in programming principles and modern development practices.
-          </p>
+          <p class="text-lg">{{ education.degree.description }}</p>
         </CardContent>
       </Card>
 
@@ -459,21 +288,9 @@ const hobbies = [
         </CardHeader>
         <CardContent>
           <ul class="space-y-3 text-lg">
-            <li class="flex items-start gap-2">
+            <li v-for="cert in education.certifications" :key="cert" class="flex items-start gap-2">
               <iconify-icon icon="mdi:check-circle" class="text-green-500 mt-1 flex-shrink-0" />
-              <span>Vue.js and Modern Frontend Development</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <iconify-icon icon="mdi:check-circle" class="text-green-500 mt-1 flex-shrink-0" />
-              <span>TypeScript: Advanced Concepts</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <iconify-icon icon="mdi:check-circle" class="text-green-500 mt-1 flex-shrink-0" />
-              <span>Web Performance Optimization</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <iconify-icon icon="mdi:check-circle" class="text-green-500 mt-1 flex-shrink-0" />
-              <span>Accessibility in Web Development</span>
+              <span>{{ cert }}</span>
             </li>
           </ul>
         </CardContent>
@@ -521,11 +338,11 @@ const hobbies = [
         />
 
         <SkillCard
-          title="Best Practices"
-          icon="mdi:rocket-launch"
+          title="Backend Development"
+          icon="mdi:server"
           icon-color="text-blue-500"
-          :items="skills.practices"
-          type="list"
+          :items="skills.backend"
+          type="badge"
         />
 
         <SkillCard
@@ -577,26 +394,18 @@ const hobbies = [
 
     <!-- Footer -->
     <div class="mt-24 py-8 border-t text-center text-muted-foreground">
-      <p class="text-lg">© 2024 Mirko Bosetti. Built with Vue.js & Tailwind CSS.</p>
+      <p class="text-lg">{{ footer.copyright }}</p>
       <div class="flex justify-center gap-6 mt-4">
         <a
-          href="https://github.com/mirkobosetti"
-          target="_blank"
-          rel="noopener noreferrer"
+          v-for="link in footer.socialLinks"
+          :key="link.label"
+          :href="link.href"
+          :target="link.href.startsWith('http') ? '_blank' : undefined"
+          :rel="link.href.startsWith('http') ? 'noopener noreferrer' : undefined"
           class="hover:text-foreground transition"
+          :aria-label="link.label"
         >
-          <iconify-icon icon="mdi:github" class="text-2xl" />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/mirkobosetti"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hover:text-foreground transition"
-        >
-          <iconify-icon icon="mdi:linkedin" class="text-2xl" />
-        </a>
-        <a href="mailto:mirkobosetti@example.com" class="hover:text-foreground transition">
-          <iconify-icon icon="mdi:email" class="text-2xl" />
+          <iconify-icon :icon="link.icon" class="text-2xl" />
         </a>
       </div>
     </div>
