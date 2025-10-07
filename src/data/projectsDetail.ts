@@ -1,6 +1,7 @@
 import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
 import projectKingmaker from '@/assets/images/project_kingmaker.png'
+import projectCarAI from '@/assets/images/project_carai.png'
 
 export interface ProjectDetail {
   name: string
@@ -80,6 +81,29 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     ],
     links: {
       github: 'https://github.com/mirkobosetti/kingmaker'
+    }
+  },
+  carai: {
+    name: 'CarAI',
+    tagline: 'AI-Powered Car',
+    description:
+      'A sophisticated self-driving car simulation powered by neural networks and genetic algorithms. Watch as 100 AI-controlled cars learn to navigate traffic, avoid obstacles, and improve their driving skills through evolutionary learning.',
+    image: projectCarAI,
+    category: 'AI Learning',
+    date: '2022',
+    technologies: ['Typescript', 'Vite'],
+    features: [
+      'Ray-casting sensors: 7 rays with 200px detection range',
+      'Real-time visualization: Neural network activity display',
+      'Traffic simulation: Dynamic obstacle generation',
+      'Auto-save: Best brain persists across sessions',
+      'Performance tracking: Distance, generation, and stats display',
+      'Pause/Resume: Full simulation control',
+      'Speed control: 1x, 2x, 5x simulation speeds'
+    ],
+    links: {
+      live: 'https://carai.example.com',
+      github: 'https://github.com/mirkobosetti/carai'
     }
   }
 }

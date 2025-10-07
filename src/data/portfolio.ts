@@ -4,6 +4,7 @@ import avatar from '@/assets/images/avatar.png'
 import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
 import projectKingmaker from '@/assets/images/project_kingmaker.png'
+import projectCarAI from '@/assets/images/project_carai.png'
 import type { workExperience } from '../types'
 
 export const personalInfo = {
@@ -223,6 +224,13 @@ export const projects = [
     description: 'Pathfinder:Kingmaker - Game Assistant',
     image: projectKingmaker,
     technologies: ['Vue.js', 'Pinia', 'MongoDB', 'Desktop Only']
+  },
+  {
+    slug: 'carai',
+    title: 'CarAI',
+    description: 'AI-Powered Car',
+    image: projectCarAI,
+    technologies: ['Typescript', 'Vite']
   },
   {
     slug: 'portfolio-website',
