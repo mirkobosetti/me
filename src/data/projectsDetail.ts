@@ -1,13 +1,13 @@
 import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
 import projectKingmaker from '@/assets/images/project_kingmaker.png'
-import projectCarAI from '@/assets/images/project_carai.png'
+import projectCarAI from '@/assets/video/project_carai.mov'
 
 export interface ProjectDetail {
   name: string
   tagline: string
   description: string
-  image: string
+  media: string
   technologies: string[]
   features: string[]
   links?: {
@@ -25,7 +25,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     tagline: 'Personal portfolio showcasing my work and skills',
     description:
       'A modern, responsive portfolio website built with Vue.js and Tailwind CSS. Features smooth animations, optimized performance, and a clean design that puts my work front and center.',
-    image: projectPortfolio,
+    media: projectPortfolio,
     category: 'Web Development',
     date: '2024',
     technologies: ['Vue.js', 'TypeScript', 'Tailwind CSS', 'Shadcn UI', 'Vite'],
@@ -46,7 +46,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     tagline: 'Late Night Game with Friends',
     description:
       'A fun interactive drinking game app designed for parties and social gatherings. Built with Vue.js and features a clean, intuitive interface perfect for late-night entertainment with friends.',
-    image: projectDrinkando,
+    media: projectDrinkando,
     category: 'Entertainment',
     date: '2024',
     technologies: ['Vue.js', 'Pinia', 'Tailwind CSS'],
@@ -67,7 +67,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     tagline: 'Pathfinder: Kingmaker - Game Assistant',
     description:
       'A comprehensive companion app for the Pathfinder: Kingmaker RPG. Helps players manage characters, track kingdom stats, and enhance their gaming experience with quick reference tools and calculators.',
-    image: projectKingmaker,
+    media: projectKingmaker,
     category: 'Gaming Tools',
     date: '2024',
     technologies: ['Vue.js', 'Pinia', 'MongoDB', 'Node.js'],
@@ -88,7 +88,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     tagline: 'AI-Powered Car',
     description:
       'A sophisticated self-driving car simulation powered by neural networks and genetic algorithms. Watch as 100 AI-controlled cars learn to navigate traffic, avoid obstacles, and improve their driving skills through evolutionary learning.',
-    image: projectCarAI,
+    media: projectCarAI,
     category: 'AI Learning',
     date: '2022',
     technologies: ['Typescript', 'Vite'],
@@ -102,7 +102,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
       'Speed control: 1x, 2x, 5x simulation speeds'
     ],
     links: {
-      live: 'https://carai.example.com',
+      live: 'https://mirkobosetti.github.io/CarAI/',
       github: 'https://github.com/mirkobosetti/carai'
     }
   }

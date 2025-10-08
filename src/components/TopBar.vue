@@ -20,7 +20,7 @@ const scrollToSection = (sectionId: string) => {
         >
           <iconify-icon
             icon="mdi:account-circle"
-            class="text-xl md:text-2xl group-hover:text-yellow-500 transition-colors"
+            class="text-xl md:text-2xl md:hidden group-hover:text-yellow-500 transition-colors"
           />
           <p
             class="hidden md:block text-xl group-hover:text-yellow-500 transition-colors cursor-pointer"
@@ -40,7 +40,7 @@ const scrollToSection = (sectionId: string) => {
         >
           <iconify-icon
             icon="mdi:briefcase"
-            class="text-xl md:text-2xl group-hover:text-yellow-500 transition-colors"
+            class="text-xl md:text-2xl md:hidden group-hover:text-yellow-500 transition-colors"
           />
           <p
             class="hidden md:block text-xl group-hover:text-yellow-500 transition-colors cursor-pointer"
@@ -60,7 +60,7 @@ const scrollToSection = (sectionId: string) => {
         >
           <iconify-icon
             icon="mdi:school"
-            class="text-xl md:text-2xl group-hover:text-yellow-500 transition-colors"
+            class="text-xl md:text-2xl md:hidden group-hover:text-yellow-500 transition-colors"
           />
           <p
             class="hidden md:block text-xl group-hover:text-yellow-500 transition-colors cursor-pointer"
@@ -80,7 +80,7 @@ const scrollToSection = (sectionId: string) => {
         >
           <iconify-icon
             icon="mdi:puzzle-heart"
-            class="text-xl md:text-2xl group-hover:text-yellow-500 transition-colors"
+            class="text-xl md:text-2xl md:hidden group-hover:text-yellow-500 transition-colors"
           />
           <p
             class="hidden md:block text-xl group-hover:text-yellow-500 transition-colors cursor-pointer"
@@ -100,7 +100,7 @@ const scrollToSection = (sectionId: string) => {
         >
           <iconify-icon
             icon="mdi:lightbulb-on"
-            class="text-xl md:text-2xl group-hover:text-yellow-500 transition-colors"
+            class="text-xl md:text-2xl md:hidden group-hover:text-yellow-500 transition-colors"
           />
           <p
             class="hidden md:block text-xl group-hover:text-yellow-500 transition-colors cursor-pointer"
@@ -120,7 +120,7 @@ const scrollToSection = (sectionId: string) => {
         >
           <iconify-icon
             icon="mdi:email"
-            class="text-xl md:text-2xl group-hover:text-yellow-500 transition-colors"
+            class="text-xl md:text-2xl md:hidden group-hover:text-yellow-500 transition-colors"
           />
           <p
             class="hidden md:block text-xl group-hover:text-yellow-500 transition-colors cursor-pointer"

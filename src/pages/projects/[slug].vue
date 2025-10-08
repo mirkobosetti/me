@@ -90,8 +90,22 @@ useMeta({
 
         <!-- Project Image - Right on large screens, bottom on mobile -->
         <Card class="overflow-hidden">
+          <video
+            v-if="
+              project.media?.endsWith('.mp4') ||
+              project.media?.endsWith('.webm') ||
+              project.media?.endsWith('.mov')
+            "
+            :src="project.media"
+            class="w-full h-full object-cover rounded-lg"
+            controls
+            autoplay
+            muted
+            loop
+          />
           <img
-            :src="project.image"
+            v-else
+            :src="project.media"
             :alt="project.name"
             class="w-full h-full object-cover rounded-lg"
           />
