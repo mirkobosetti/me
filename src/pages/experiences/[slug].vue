@@ -231,9 +231,16 @@ useMeta({
                 <iconify-icon icon="mdi:email" class="mr-2 text-xl" />
                 Contact Me
               </Button>
-              <Button size="lg" variant="outline">
-                <iconify-icon icon="mdi:download" class="mr-2 text-xl" />
-                Download CV
+              <Button
+                as-child
+                variant="outline"
+                size="default"
+                class="md:size-lg text-sm md:text-lg px-4 md:px-6"
+              >
+                <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+                  <iconify-icon icon="mdi:file-pdf-box" class="mr-2 text-lg md:text-xl" />
+                  View CV
+                </a>
               </Button>
             </div>
           </CardContent>
