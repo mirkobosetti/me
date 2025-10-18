@@ -2,6 +2,7 @@ import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
 import projectKingmaker from '@/assets/images/project_kingmaker.png'
 import projectCarAI from '@/assets/video/project_carai.mov'
+import projectStreetsAI from '@/assets/video/project_streetsai.mov'
 
 export interface ProjectDetail {
   name: string
@@ -104,6 +105,32 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     links: {
       live: 'https://mirkobosetti.github.io/CarAI/',
       github: 'https://github.com/mirkobosetti/carai'
+    }
+  },
+  streetsai: {
+    name: 'StreetsAI',
+    tagline: 'Autonomous Driving with Real-World Maps',
+    description:
+      'An advanced AI-powered city and self-driving car simulator featuring procedurally generated cities and real-world map integration via OpenStreetMap. Neural networks learn to navigate complex urban environments with realistic traffic patterns, road networks, and dynamic obstacles.',
+    media: projectStreetsAI,
+    category: 'AI Learning',
+    date: '2024',
+    technologies: ['TypeScript', 'Canvas API', 'Neural Networks', 'OpenStreetMap API'],
+    features: [
+      'Procedural city generation with realistic road networks',
+      'Real-world map integration using OpenStreetMap data',
+      'Advanced neural network visualization and monitoring',
+      'Interactive map editor with building and road creation',
+      'Minimap system with zoom and pan controls',
+      'Ray-casting based collision detection',
+      'Multiple camera modes and perspectives',
+      'Traffic simulation with dynamic vehicles',
+      'Save/Load system for maps and AI brains',
+      'Real-time performance metrics and statistics'
+    ],
+    links: {
+      live: 'https://streetsai.mirkobosetti.com',
+      github: 'https://github.com/mirkobosetti/StreetsAI'
     }
   }
 }

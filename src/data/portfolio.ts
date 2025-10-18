@@ -5,6 +5,7 @@ import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
 import projectKingmaker from '@/assets/images/project_kingmaker.png'
 import projectCarAI from '@/assets/images/project_carai.png'
+import projectStreetsAI from '@/assets/images/project_streetsai.png'
 import type { workExperience } from '../types'
 
 export const personalInfo = {
@@ -218,6 +219,13 @@ export const education = {
 }
 
 export const projects = [
+  {
+    slug: 'streetsai',
+    title: 'StreetsAI',
+    description: 'Autonomous Driving with Real-World Maps',
+    image: projectStreetsAI,
+    technologies: ['TypeScript', 'Canvas API', 'Neural Networks', 'OpenStreetMap API']
+  },
   {
     slug: 'kingmaker',
     title: 'Kingmaker',
