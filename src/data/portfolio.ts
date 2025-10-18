@@ -6,6 +6,7 @@ import projectDrinkando from '@/assets/images/project_drinkando.png'
 import projectKingmaker from '@/assets/images/project_kingmaker.png'
 import projectCarAI from '@/assets/images/project_carai.png'
 import projectStreetsAI from '@/assets/images/project_streetsai.png'
+import projectPixelliniSbarazzini from '@/assets/images/project_pixellini_sbarazzini.png'
 import type { workExperience } from '../types'
 
 export const personalInfo = {
@@ -219,6 +220,13 @@ export const education = {
 }
 
 export const projects = [
+  {
+    slug: 'pixellini-sbarazzini',
+    title: 'Pixellini Sbarazzini',
+    description: 'Interactive Particle Image Effect',
+    image: projectPixelliniSbarazzini,
+    technologies: ['TypeScript', 'Canvas API', 'Particle Systems', 'Physics Simulation']
+  },
   {
     slug: 'streetsai',
     title: 'StreetsAI',

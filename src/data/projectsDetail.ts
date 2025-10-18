@@ -3,6 +3,7 @@ import projectDrinkando from '@/assets/images/project_drinkando.png'
 import projectKingmaker from '@/assets/images/project_kingmaker.png'
 import projectCarAI from '@/assets/video/project_carai.mov'
 import projectStreetsAI from '@/assets/video/project_streetsai.mov'
+import projectPixelliniSbarazzini from '@/assets/images/project_pixellini_sbarazzini.png'
 
 export interface ProjectDetail {
   name: string
@@ -21,6 +22,32 @@ export interface ProjectDetail {
 }
 
 export const projectsDetailData: Record<string, ProjectDetail> = {
+  'pixellini-sbarazzini': {
+    name: 'Pixellini Sbarazzini',
+    tagline: 'Interactive Particle Image Effect',
+    description:
+      'An interactive web-based particle system that deconstructs images into thousands of dynamic, physics-enabled pixels. Built with TypeScript and the HTML5 Canvas API, this project transforms static imagery into an engaging, responsive visual experience where users can interact with individual particles through mouse movements and touch gestures.',
+    media: projectPixelliniSbarazzini,
+    category: 'Interactive Art',
+    date: '2024',
+    technologies: ['TypeScript', 'Canvas API', 'Particle Systems', 'Physics Simulation', 'Vite'],
+    features: [
+      'Image-to-particle conversion with configurable density (2-15 pixel gaps)',
+      'Advanced physics simulation with velocity, friction (0.8-0.99), and elastic ease-back (0.005-0.10)',
+      'Real-time interactive controls for mouse radius (500-15000), force strength (0.1-3.0x), and particle size (1-10px)',
+      'Radial force fields that repel particles from cursor position',
+      'Warp and reset functions for dynamic particle redistribution',
+      'Fully responsive design with touch support and collapsible control panel',
+      '60 FPS animation loop using requestAnimationFrame',
+      'Object-oriented architecture with dedicated Particle and Effect classes',
+      'Mobile-optimized with adaptive layouts for different screen sizes',
+      'Modern UI with glassmorphism effects and gradient styling'
+    ],
+    links: {
+      live: 'https://pixels.mirkobosetti.com',
+      github: 'https://github.com/mirkobosetti/pixellini-sbarazzini'
+    }
+  },
   'portfolio-website': {
     name: 'Portfolio Website',
     tagline: 'Personal portfolio showcasing my work and skills',
