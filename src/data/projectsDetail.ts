@@ -87,7 +87,8 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
       'Fun animations and sound effects'
     ],
     links: {
-      demo: 'https://drinkando.example.com'
+      github: 'https://github.com/mirkobosetti/drinkando',
+      live: 'https://drinkando.mirkobosetti.com'
     }
   },
   kingmaker: {
@@ -108,6 +109,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
       'Cloud save with MongoDB integration'
     ],
     links: {
+      live: 'https://kingmaker.mirkobosetti.com',
       github: 'https://github.com/mirkobosetti/kingmaker'
     }
   },
