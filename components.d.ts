@@ -22,6 +22,7 @@ declare module 'vue' {
     CarouselItem: typeof import('./src/components/ui/carousel/CarouselItem.vue')['default']
     CarouselNext: typeof import('./src/components/ui/carousel/CarouselNext.vue')['default']
     CarouselPrevious: typeof import('./src/components/ui/carousel/CarouselPrevious.vue')['default']
+    CircularCounter: typeof import('./src/components/CircularCounter.vue')['default']
     ContactCard: typeof import('./src/components/ContactCard.vue')['default']
     Dialog: typeof import('./src/components/ui/dialog/Dialog.vue')['default']
     DialogContent: typeof import('./src/components/ui/dialog/DialogContent.vue')['default']

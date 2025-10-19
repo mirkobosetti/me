@@ -124,8 +124,14 @@ const startDrawing = (e: MouseEvent | TouchEvent) => {
 
   isDrawing.value = true
   const rect = canvas.value.getBoundingClientRect()
-  const x = ('touches' in e ? e.touches[0].clientX : e.clientX) - rect.left
-  const y = ('touches' in e ? e.touches[0].clientY : e.clientY) - rect.top
+  const x =
+    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
+      ? e.touches[0].clientX
+      : (e as MouseEvent).clientX - rect.left
+  const y =
+    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
+      ? e.touches[0].clientY
+      : (e as MouseEvent).clientY - rect.top
 
   ctx.value.strokeStyle = currentColor.value
   ctx.value.lineWidth = getPencilWidth()
@@ -139,8 +145,14 @@ const draw = (e: MouseEvent | TouchEvent) => {
   if (!isDrawing.value || !ctx.value || !canvas.value) return
 
   const rect = canvas.value.getBoundingClientRect()
-  const x = ('touches' in e ? e.touches[0].clientX : e.clientX) - rect.left
-  const y = ('touches' in e ? e.touches[0].clientY : e.clientY) - rect.top
+  const x =
+    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
+      ? e.touches[0].clientX
+      : (e as MouseEvent).clientX - rect.left
+  const y =
+    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
+      ? e.touches[0].clientY
+      : (e as MouseEvent).clientY - rect.top
 
   ctx.value.lineTo(x, y)
   ctx.value.stroke()
@@ -333,13 +345,16 @@ onMounted(() => {
         </div>
 
         <!-- Actions -->
-        <div class="flex gap-3 justify-end pt-4">
-          <span>{{ MAX_DESCRIPTION_LENGTH - description.length }} chars left</span>
-          <Button variant="outline" @click="handleClose"> Cancel </Button>
-          <Button @click="handleSave" :disabled="!canSave()">
-            <iconify-icon icon="mdi:upload" class="mr-2 text-xl" />
-            Upload
-          </Button>
+        <div class="flex gap-3 justify-between items-center">
+          <CircularCounter :current="description.length" :max="MAX_DESCRIPTION_LENGTH" />
+
+          <div class="flex gap-3">
+            <Button variant="outline" @click="handleClose"> Cancel </Button>
+            <Button @click="handleSave" :disabled="!canSave()">
+              <iconify-icon icon="mdi:upload" class="mr-2 text-xl" />
+              Upload
+            </Button>
+          </div>
         </div>
       </div>
     </DialogContent>
