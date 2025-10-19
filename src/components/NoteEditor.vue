@@ -124,14 +124,17 @@ const startDrawing = (e: MouseEvent | TouchEvent) => {
 
   isDrawing.value = true
   const rect = canvas.value.getBoundingClientRect()
-  const x =
-    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
-      ? e.touches[0].clientX
-      : (e as MouseEvent).clientX - rect.left
-  const y =
-    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
-      ? e.touches[0].clientY
-      : (e as MouseEvent).clientY - rect.top
+  let clientX, clientY
+  if ('touches' in e && e.touches && e.touches.length > 0 && e.touches[0]) {
+    clientX = e.touches[0].clientX
+    clientY = e.touches[0].clientY
+  } else {
+    clientX = (e as MouseEvent).clientX
+    clientY = (e as MouseEvent).clientY
+  }
+  // Map from CSS size to canvas size
+  const x = ((clientX - rect.left) * canvas.value.width) / rect.width
+  const y = ((clientY - rect.top) * canvas.value.height) / rect.height
 
   ctx.value.strokeStyle = currentColor.value
   ctx.value.lineWidth = getPencilWidth()
@@ -145,14 +148,17 @@ const draw = (e: MouseEvent | TouchEvent) => {
   if (!isDrawing.value || !ctx.value || !canvas.value) return
 
   const rect = canvas.value.getBoundingClientRect()
-  const x =
-    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
-      ? e.touches[0].clientX
-      : (e as MouseEvent).clientX - rect.left
-  const y =
-    'touches' in e && e.touches && e.touches.length > 0 && e.touches[0]
-      ? e.touches[0].clientY
-      : (e as MouseEvent).clientY - rect.top
+  let clientX, clientY
+  if ('touches' in e && e.touches && e.touches.length > 0 && e.touches[0]) {
+    clientX = e.touches[0].clientX
+    clientY = e.touches[0].clientY
+  } else {
+    clientX = (e as MouseEvent).clientX
+    clientY = (e as MouseEvent).clientY
+  }
+  // Map from CSS size to canvas size
+  const x = ((clientX - rect.left) * canvas.value.width) / rect.width
+  const y = ((clientY - rect.top) * canvas.value.height) / rect.height
 
   ctx.value.lineTo(x, y)
   ctx.value.stroke()
@@ -170,9 +176,8 @@ const stopDrawing = () => {
 const resetCanvas = () => {
   if (!ctx.value || !canvas.value) return
 
-  const rect = canvas.value.getBoundingClientRect()
   ctx.value.fillStyle = '#E5E5E5'
-  ctx.value.fillRect(0, 0, rect.width, rect.height)
+  ctx.value.fillRect(0, 0, canvas.value.width, canvas.value.height)
 
   saveHistory()
 }
