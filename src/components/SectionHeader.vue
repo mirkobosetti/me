@@ -17,5 +17,6 @@ withDefaults(defineProps<Props>(), {
       :class="`inline-block mr-1 md:mr-2 text-2xl md:text-4xl ${iconColor}`"
     />
     <span>{{ title }}</span>
+    <slot name="rightButton" />
   </h2>
 </template>

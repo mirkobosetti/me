@@ -388,6 +388,10 @@ useMeta({
 
     <Separator class="my-8" />
 
+    <NotesSection />
+
+    <Separator class="my-8" />
+
     <div id="contact" class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20">
       <SectionHeader icon="mdi:email" title="Get In Touch" />
 
