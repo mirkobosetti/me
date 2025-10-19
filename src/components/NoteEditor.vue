@@ -186,13 +186,57 @@ const eraseMode = () => {
   currentColor.value = '#E5E5E5'
 }
 
+const sanitizeInput = (input: string): string => {
+  // Rimuove caratteri potenzialmente pericolosi e trim
+  return input
+    .trim()
+    .replace(/[<>\"']/g, '') // Rimuove caratteri HTML/JS pericolosi
+    .substring(0, 100) // Limite massimo assoluto
+}
+
 const handleSave = () => {
   if (!canvas.value) return
 
+  // Validazione
+  const sanitizedAuthor = sanitizeInput(author.value)
+  const sanitizedDescription = sanitizeInput(description.value)
+
+  if (sanitizedAuthor.length === 0) {
+    alert('Please enter an author name')
+    return
+  }
+
+  if (sanitizedAuthor.length > 20) {
+    alert('Author name must be 20 characters or less')
+    return
+  }
+
+  if (sanitizedDescription.length > 50) {
+    alert('Description must be 50 characters or less')
+    return
+  }
+
+  // Verifica che il canvas non sia vuoto (confronta con canvas pulito)
+  const tempCanvas = document.createElement('canvas')
+  tempCanvas.width = 300
+  tempCanvas.height = 300
+  const tempCtx = tempCanvas.getContext('2d')
+  if (tempCtx) {
+    tempCtx.fillStyle = '#E5E5E5'
+    tempCtx.fillRect(0, 0, 300, 300)
+    const emptyCanvas = tempCanvas.toDataURL()
+    const currentCanvas = canvas.value.toDataURL()
+
+    if (emptyCanvas === currentCanvas) {
+      alert('Please draw something on the canvas')
+      return
+    }
+  }
+
   const noteData: NoteData = {
     canvas: canvas.value.toDataURL(),
-    author: author.value,
-    description: description.value
+    author: sanitizedAuthor,
+    description: sanitizedDescription
   }
 
   emit('save', noteData)
