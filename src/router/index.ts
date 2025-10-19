@@ -56,4 +56,14 @@ const router = createRouter({
   }
 })
 
+// Prevent router from handling PDF and other static files
+router.beforeEach((to, from, next) => {
+  // If the path ends with .pdf or other static file extensions, force a full page load
+  if (to.path.match(/\.(pdf|png|jpg|jpeg|gif|svg|ico|txt)$/i)) {
+    window.location.href = to.fullPath
+    return
+  }
+  next()
+})
+
 export default router
