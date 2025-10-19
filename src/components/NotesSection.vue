@@ -57,28 +57,16 @@ const handleSaveNote = (noteData: NoteData) => {
   isEditorOpen.value = false
 }
 
-// Format date
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(date)
-}
-
 onMounted(() => {
   loadNotes()
 })
 </script>
 
 <template>
-  <div id="notes" class="min-h-[50vh] my-16 max-w-4xl scroll-mt-20">
+  <div id="notes" class="min-h-[50vh] my-16 max-w-4xl w-full scroll-mt-20 p-6">
     <SectionHeader icon="mdi:note-text" title="Notes">
       <template #rightButton>
-        <Button @click="isEditorOpen = true" class="w-full md:w-auto md:ml-auto">
+        <Button @click="isEditorOpen = true" class="md:w-auto ml-auto">
           <iconify-icon icon="mdi:plus" class="mr-2 text-xl" />
           Leave me a note
         </Button>
@@ -93,52 +81,31 @@ onMounted(() => {
         @save="handleSaveNote"
       />
 
-      <!-- Notes List -->
-      <div v-if="notes.length === 0" class="text-center py-12">
-        <iconify-icon icon="mdi:note-off" class="text-6xl text-muted-foreground mb-4" />
-        <p class="text-xl text-muted-foreground">
-          No notes yet. Add your first note to get started!
-        </p>
-      </div>
-
-      <div v-else class="grid md:grid-cols-2 gap-6">
+      <div ref="display-cards" class="min-h-screen relative">
         <Card
           v-for="note in notes"
           :key="note.id"
-          class="hover:border-yellow-500/50 transition-colors overflow-hidden"
+          class="bg-gray-800 p-2 w-48 gap-2 absolute"
+          :style="{
+            left: `${Math.random() * 70}%`,
+            top: `${Math.random() * 70}%`,
+            transform: `rotate(${(Math.random() - 0.5) * 90}deg)`
+          }"
         >
-          <div class="relative">
-            <!-- Canvas Image -->
-            <img
-              :src="note.canvas"
-              :alt="`Note by ${note.author}`"
-              class="w-full h-48 object-cover bg-gray-200"
-            />
-          </div>
+          <img
+            :src="note.canvas"
+            :alt="`Note by ${note.author}`"
+            class="w-44 h-44 object-cover rounded-lg"
+          />
 
-          <CardContent class="p-4">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <p class="font-semibold text-lg">{{ note.author }}</p>
-                <p class="text-xs text-muted-foreground flex items-center gap-1">
-                  <iconify-icon icon="mdi:clock-outline" class="text-sm" />
-                  {{ formatDate(note.createdAt) }}
-                </p>
-              </div>
+          <CardContent class="p-0">
+            <p class="font-semibold text-muted-foreground">{{ note.author }}</p>
 
-              <p v-if="note.description" class="text-sm text-muted-foreground">
-                {{ note.description }}
-              </p>
-            </div>
+            <p v-if="note.description">
+              {{ note.description }}
+            </p>
           </CardContent>
         </Card>
-      </div>
-
-      <!-- Notes Count -->
-      <div v-if="notes.length > 0" class="text-center text-muted-foreground">
-        <p class="text-base">
-          {{ notes.length }} {{ notes.length === 1 ? 'note' : 'notes' }} saved
-        </p>
       </div>
     </div>
   </div>
