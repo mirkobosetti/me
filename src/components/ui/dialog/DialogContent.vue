@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-  DialogContent,
-  type DialogContentEmits,
-  type DialogContentProps
-} from 'reka-ui'
+import { DialogContent, type DialogContentEmits, type DialogContentProps } from 'reka-ui'
 import { cn } from '@/lib/utils'
 import type { HTMLAttributes } from 'vue'
 
@@ -13,7 +9,7 @@ const emits = defineEmits<DialogContentEmits>()
 
 <template>
   <DialogPortal>
-    <DialogOverlay />
+    <!-- <DialogOverlay /> -->
     <DialogContent
       v-bind="props"
       :class="

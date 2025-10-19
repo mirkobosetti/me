@@ -235,133 +235,131 @@ onMounted(() => {
 </script>
 
 <template>
-  <Dialog :open="open" @update:open="emit('update:open', $event)">
-    <DialogContent class="max-w-md max-h-[90vh] overflow-y-auto">
-      <div class="space-y-4">
-        <!-- Tools and Canvas Layout -->
-        <div class="flex flex-col gap-4 items-center justify-center">
-          <!-- Color Palette and Tools -->
-          <div class="pt-3 px-4 bg-muted rounded-lg">
-            <!-- Colors -->
-            <div class="flex gap-2 items-center justify-center">
-              <button
-                v-for="color in colors"
-                :key="color.value"
-                type="button"
-                :class="[
-                  'w-8 h-8 rounded-full border transition-all',
-                  currentColor === color.value ? 'border-yellow-500 scale-110' : 'border-gray-400'
-                ]"
-                :style="{ backgroundColor: color.value }"
-                @click="currentColor = color.value"
-              />
-            </div>
-            <div class="flex gap-2 items-center justify-between mt-2">
-              <div class="flex gap-2">
-                <button
-                  type="button"
-                  class="p-2 hover:bg-background rounded transition"
-                  @click="undo"
-                  :disabled="historyStep <= 0"
-                  :class="{ 'opacity-50 cursor-not-allowed': historyStep <= 0 }"
-                >
-                  <iconify-icon icon="mdi:undo" class="text-2xl" />
-                </button>
-
-                <button
-                  type="button"
-                  class="p-2 hover:bg-background rounded transition"
-                  @click="redo"
-                  :disabled="historyStep >= history.length - 1"
-                  :class="{ 'opacity-50 cursor-not-allowed': historyStep >= history.length - 1 }"
-                >
-                  <iconify-icon icon="mdi:redo" class="text-2xl" />
-                </button>
-              </div>
-
-              <div class="flex gap-2">
-                <button
-                  type="button"
-                  class="p-2 hover:bg-background rounded transition"
-                  @click="eraseMode"
-                >
-                  <iconify-icon icon="mdi:eraser" class="text-2xl" />
-                </button>
-
-                <button
-                  type="button"
-                  class="p-2 hover:bg-background rounded transition"
-                  @click="resetCanvas"
-                >
-                  <iconify-icon icon="mdi:delete" class="text-2xl" />
-                </button>
-
-                <button
-                  type="button"
-                  class="p-2 hover:bg-background rounded transition relative"
-                  @click="cyclePencilSize"
-                >
-                  <iconify-icon icon="mdi:pencil" class="text-2xl" />
-                  <span
-                    class="absolute bottom-3 -right-0 bg-yellow-500 text-black text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold"
-                  >
-                    {{ pencilSize === 'small' ? 'S' : pencilSize === 'medium' ? 'M' : 'L' }}
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Canvas -->
-          <div class="border-2 border-gray-300 rounded-lg overflow-hidden bg-gray-200 h-80 w-80">
-            <canvas
-              ref="canvas"
-              class="w-80 h-80 cursor-crosshair touch-none"
-              @mousedown="startDrawing"
-              @mousemove="draw"
-              @mouseup="stopDrawing"
-              @mouseleave="stopDrawing"
-              @touchstart.prevent="startDrawing"
-              @touchmove.prevent="draw"
-              @touchend.prevent="stopDrawing"
+  <Modal :open="open" @update:open="emit('update:open', $event)">
+    <div class="space-y-2">
+      <!-- Tools and Canvas Layout -->
+      <div class="flex flex-col gap-4 items-center justify-center">
+        <!-- Color Palette and Tools -->
+        <div class="pt-3 px-4 bg-muted rounded-lg">
+          <!-- Colors -->
+          <div class="flex gap-2 items-center justify-center">
+            <button
+              v-for="color in colors"
+              :key="color.value"
+              type="button"
+              :class="[
+                'w-8 h-8 rounded-full border transition-all',
+                currentColor === color.value ? 'border-yellow-500 scale-110' : 'border-gray-400'
+              ]"
+              :style="{ backgroundColor: color.value }"
+              @click="currentColor = color.value"
             />
           </div>
-        </div>
+          <div class="flex gap-2 items-center justify-between mt-2">
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="p-2 hover:bg-background rounded transition"
+                @click="undo"
+                :disabled="historyStep <= 0"
+                :class="{ 'opacity-50 cursor-not-allowed': historyStep <= 0 }"
+              >
+                <iconify-icon icon="mdi:undo" class="text-2xl" />
+              </button>
 
-        <!-- Author Name -->
-        <div>
-          <input
-            v-model="author"
-            type="text"
-            placeholder="Author name"
-            class="w-full p-2 px-3 rounded-lg border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            maxlength="20"
-          />
-        </div>
+              <button
+                type="button"
+                class="p-2 hover:bg-background rounded transition"
+                @click="redo"
+                :disabled="historyStep >= history.length - 1"
+                :class="{ 'opacity-50 cursor-not-allowed': historyStep >= history.length - 1 }"
+              >
+                <iconify-icon icon="mdi:redo" class="text-2xl" />
+              </button>
+            </div>
 
-        <!-- Description -->
-        <div>
-          <input
-            v-model="description"
-            placeholder="Description"
-            :maxlength="MAX_DESCRIPTION_LENGTH"
-            class="w-full p-2 px-3 rounded-lg border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-yellow-500"
-          />
-        </div>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="p-2 hover:bg-background rounded transition"
+                @click="eraseMode"
+              >
+                <iconify-icon icon="mdi:eraser" class="text-2xl" />
+              </button>
 
-        <!-- Actions -->
-        <div class="flex gap-3 justify-between items-center">
-          <CircularCounter :current="description.length" :max="MAX_DESCRIPTION_LENGTH" />
+              <button
+                type="button"
+                class="p-2 hover:bg-background rounded transition"
+                @click="resetCanvas"
+              >
+                <iconify-icon icon="mdi:delete" class="text-2xl" />
+              </button>
 
-          <div class="flex gap-3">
-            <Button variant="outline" @click="handleClose"> Cancel </Button>
-            <Button @click="handleSave" :disabled="!canSave()">
-              <iconify-icon icon="mdi:upload" class="mr-2 text-xl" />
-              Upload
-            </Button>
+              <button
+                type="button"
+                class="p-2 hover:bg-background rounded transition relative"
+                @click="cyclePencilSize"
+              >
+                <iconify-icon icon="mdi:pencil" class="text-2xl" />
+                <span
+                  class="absolute bottom-3 -right-0 bg-yellow-500 text-black text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold"
+                >
+                  {{ pencilSize === 'small' ? 'S' : pencilSize === 'medium' ? 'M' : 'L' }}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
+
+        <!-- Canvas -->
+        <div class="border-2 border-gray-300 rounded-lg overflow-hidden bg-gray-200 h-80 w-80">
+          <canvas
+            ref="canvas"
+            class="w-80 h-80 cursor-crosshair touch-none"
+            @mousedown="startDrawing"
+            @mousemove="draw"
+            @mouseup="stopDrawing"
+            @mouseleave="stopDrawing"
+            @touchstart.prevent="startDrawing"
+            @touchmove.prevent="draw"
+            @touchend.prevent="stopDrawing"
+          />
+        </div>
       </div>
-    </DialogContent>
-  </Dialog>
+
+      <!-- Author Name -->
+      <div>
+        <input
+          v-model="author"
+          type="text"
+          placeholder="Author name"
+          class="w-full p-2 px-3 rounded-lg border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          maxlength="20"
+        />
+      </div>
+
+      <!-- Description -->
+      <div>
+        <input
+          v-model="description"
+          placeholder="Description"
+          :maxlength="MAX_DESCRIPTION_LENGTH"
+          class="w-full p-2 px-3 rounded-lg border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        />
+      </div>
+
+      <!-- Actions -->
+      <div class="flex gap-3 justify-between items-center">
+        <CircularCounter :current="description.length" :max="MAX_DESCRIPTION_LENGTH" />
+
+        <div class="flex gap-3">
+          <Button variant="outline" @click="handleClose"> Cancel </Button>
+          <Button @click="handleSave" :disabled="!canSave()">
+            <iconify-icon icon="mdi:upload" class="mr-2 text-xl" />
+            Upload
+          </Button>
+        </div>
+      </div>
+    </div>
+  </Modal>
 </template>

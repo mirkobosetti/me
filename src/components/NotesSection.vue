@@ -57,12 +57,6 @@ const handleSaveNote = (noteData: NoteData) => {
   isEditorOpen.value = false
 }
 
-// Delete a note
-const deleteNote = (id: string) => {
-  notes.value = notes.value.filter((note) => note.id !== id)
-  saveNotes()
-}
-
 // Format date
 const formatDate = (dateString: string) => {
   const date = new Date(dateString)
@@ -120,16 +114,6 @@ onMounted(() => {
               :alt="`Note by ${note.author}`"
               class="w-full h-48 object-cover bg-gray-200"
             />
-
-            <!-- Delete Button Overlay -->
-            <Button
-              variant="ghost"
-              size="sm"
-              @click="deleteNote(note.id)"
-              class="absolute top-2 right-2 bg-black/50 hover:bg-red-500 text-white backdrop-blur-sm"
-            >
-              <iconify-icon icon="mdi:delete" class="text-xl" />
-            </Button>
           </div>
 
           <CardContent class="p-4">

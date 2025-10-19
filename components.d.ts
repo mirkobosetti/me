@@ -30,6 +30,7 @@ declare module 'vue' {
     DialogPortal: typeof import('./src/components/ui/dialog/DialogPortal.vue')['default']
     DialogTrigger: typeof import('./src/components/ui/dialog/DialogTrigger.vue')['default']
     InfoListItem: typeof import('./src/components/InfoListItem.vue')['default']
+    Modal: typeof import('./src/components/Modal.vue')['default']
     NavigationMenu: typeof import('./src/components/ui/navigation-menu/NavigationMenu.vue')['default']
     NavigationMenuContent: typeof import('./src/components/ui/navigation-menu/NavigationMenuContent.vue')['default']
     NavigationMenuIndicator: typeof import('./src/components/ui/navigation-menu/NavigationMenuIndicator.vue')['default']
