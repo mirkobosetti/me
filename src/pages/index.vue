@@ -9,6 +9,9 @@ import {
   socialLinks,
   footer
 } from '../data/portfolio'
+import { usePdf } from '../composables/usePdf'
+
+const { openPdf } = usePdf()
 
 useMeta({
   title: `${personalInfo.name} | Home`
@@ -423,15 +426,13 @@ useMeta({
               </a>
             </Button>
             <Button
-              as-child
               variant="outline"
               size="default"
               class="md:size-lg text-sm md:text-lg px-4 md:px-6"
+              @click="openPdf"
             >
-              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
-                <iconify-icon icon="mdi:file-pdf-box" class="mr-2 text-lg md:text-xl" />
-                View CV
-              </a>
+              <iconify-icon icon="mdi:file-pdf-box" class="mr-2 text-lg md:text-xl" />
+              View CV
             </Button>
           </div>
         </CardContent>
