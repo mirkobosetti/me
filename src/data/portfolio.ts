@@ -25,8 +25,7 @@ export const personalInfo = {
   about: {
     summary: [
       'Frontend Developer with <strong>6+ years of experience</strong> specializing in building modern, scalable web applications. Expert in <strong>Vue.js ecosystem</strong> (Vue 2/3, Nuxt.js) with a strong focus on performance optimization, user experience, and clean code architecture.',
-      "Currently working at <strong>Cving</strong>, where I've built critical features including a comprehensive back-office dashboard, candidate platform, and a real-time video interview system using <strong>WebRTC</strong> and <strong>Socket.io</strong>.",
-      "I'm passionate about creating <strong>accessible, user-friendly</strong> applications that solve real problems. I believe in continuous learning, best practices, and writing maintainable code that teams can easily work with."
+      "Currently working at <strong>Cving</strong>, where I've built critical features including a comprehensive back-office dashboard, candidate platform, and a real-time video interview system using <strong>WebRTC</strong> and <strong>Socket.io</strong>."
     ],
     strengths: [
       {
