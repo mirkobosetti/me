@@ -1,6 +1,0 @@
-# Serve static files directly
-/cv.pdf   /cv.pdf   200
-/vite.svg /vite.svg 200
-
-# Route everything else to index.html for SPA routing
-/*        /index.html   200
