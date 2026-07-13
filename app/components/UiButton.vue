@@ -10,6 +10,11 @@ const props = withDefaults(defineProps<Props>(), {
   as: 'button'
 })
 
+// A string like 'NuxtLink' is not resolved by <component :is>, so map
+// component names to their actual component; native tags pass through.
+const NuxtLink = resolveComponent('NuxtLink')
+const tag = computed(() => (props.as === 'NuxtLink' ? NuxtLink : props.as))
+
 const base =
   'inline-flex items-center justify-center gap-2 font-display font-bold uppercase tracking-wide whitespace-nowrap select-none rounded-[4px] transition-all duration-150 active:translate-y-px disabled:opacity-40 disabled:pointer-events-none focus-visible:outline-2 focus-visible:outline-accent'
 
@@ -29,7 +34,7 @@ const sizes = {
 </script>
 
 <template>
-  <component :is="props.as" :class="cn(base, variants[props.variant], sizes[props.size])">
+  <component :is="tag" :class="cn(base, variants[props.variant], sizes[props.size])">
     <slot />
   </component>
 </template>

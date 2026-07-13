@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -6 44 44" width="180" height="180">
+  <!-- full-bleed background: iOS applies its own corner mask -->
+  <rect x="-6" y="-6" width="44" height="44" fill="#0a0a0b"/>
+  <g fill="#ffc233">
+    <!-- pixel "M" (same glyph as public/favicon.svg) -->
+    <rect x="6" y="8" width="4" height="4"/>
+    <rect x="6" y="12" width="4" height="4"/>
+    <rect x="6" y="16" width="4" height="4"/>
+    <rect x="6" y="20" width="4" height="4"/>
+    <rect x="10" y="12" width="4" height="4"/>
+    <rect x="14" y="16" width="4" height="4"/>
+    <rect x="18" y="12" width="4" height="4"/>
+    <rect x="22" y="8" width="4" height="4"/>
+    <rect x="22" y="12" width="4" height="4"/>
+    <rect x="22" y="16" width="4" height="4"/>
+    <rect x="22" y="20" width="4" height="4"/>
+  </g>
+</svg>

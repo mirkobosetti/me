@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps<{
+import { projectSlugs } from '#shared/site'
+
+const props = defineProps<{
   slug: string
   title: string
   description: string
@@ -7,12 +9,19 @@ defineProps<{
   technologies: string[]
   index: number
 }>()
+
+// Projects without a detail page (e.g. gestoide) render as a plain card
+// instead of a link to a 404.
+const hasDetail = (projectSlugs as readonly string[]).includes(props.slug)
+const NuxtLink = resolveComponent('NuxtLink')
 </script>
 
 <template>
-  <NuxtLink
-    :to="`/projects/${slug}`"
-    class="group relative flex h-full flex-col overflow-hidden rounded-[4px] border border-border bg-surface/60 transition-colors duration-200 hover:border-accent-dim"
+  <component
+    :is="hasDetail ? NuxtLink : 'div'"
+    :to="hasDetail ? `/projects/${slug}` : undefined"
+    class="group relative flex h-full flex-col overflow-hidden rounded-[4px] border border-border bg-surface/60 transition-colors duration-200"
+    :class="hasDetail ? 'hover:border-accent-dim' : ''"
   >
     <!-- media -->
     <div class="relative aspect-16/10 overflow-hidden bg-surface-2">
@@ -42,6 +51,7 @@ defineProps<{
       <div class="flex items-start justify-between gap-2">
         <h3 class="font-display text-xl font-bold leading-tight">{{ title }}</h3>
         <Icon
+          v-if="hasDetail"
           name="mdi:arrow-top-right"
           class="mt-1 shrink-0 text-lg text-faint transition-colors group-hover:text-accent"
         />
@@ -53,5 +63,5 @@ defineProps<{
         <TechBadge v-for="tech in technologies.slice(0, 4)" :key="tech" :label="tech" />
       </div>
     </div>
-  </NuxtLink>
+  </component>
 </template>

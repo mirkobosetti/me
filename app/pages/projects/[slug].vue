@@ -6,15 +6,20 @@ const route = useRoute()
 const slug = computed(() => String(route.params.slug).toLowerCase())
 const project = computed(() => projectsDetailData[slug.value] ?? null)
 
-const isVideo = computed(() => /\.(mp4|webm|mov)$/i.test(project.value?.media ?? ''))
+const isVideo = computed(() => /\.(mp4|webm)$/i.test(project.value?.media ?? ''))
 
-if (!project.value) {
-  setResponseStatus(useRequestEvent(), 404)
+const event = useRequestEvent()
+if (!project.value && event) {
+  setResponseStatus(event, 404)
 }
 
 useSeoMeta({
   title: () => (project.value ? project.value.name : 'Not found'),
-  description: () => project.value?.description
+  description: () => project.value?.description,
+  ogTitle: () => (project.value ? `${project.value.name} · Mirko Bosetti` : 'Not found'),
+  ogDescription: () => project.value?.tagline ?? project.value?.description,
+  ogType: 'article',
+  robots: () => (project.value ? undefined : 'noindex')
 })
 </script>
 
@@ -62,6 +67,8 @@ useSeoMeta({
         <video
           v-if="isVideo"
           :src="project.media"
+          :poster="project.poster"
+          preload="metadata"
           class="max-h-[70vh] w-full object-contain"
           controls
           autoplay

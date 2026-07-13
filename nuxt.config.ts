@@ -18,7 +18,10 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en', class: 'dark' },
       link: [
+        { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/site.webmanifest' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }
       ]
@@ -31,7 +34,10 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    databaseUrl: process.env.DATABASE_URL || process.env.NUXT_DATABASE_URL
+    databaseUrl: process.env.DATABASE_URL || process.env.NUXT_DATABASE_URL,
+    public: {
+      siteUrl: 'https://mirkobosetti.com'
+    }
   },
 
   nitro: {

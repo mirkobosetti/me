@@ -1,15 +1,19 @@
 import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
-import projectKingmaker from '@/assets/images/project_kingmaker.png'
-import projectCarAI from '@/assets/video/project_carai.mov'
-import projectStreetsAI from '@/assets/video/project_streetsai.mov'
-import projectPixelliniSbarazzini from '@/assets/images/project_pixellini_sbarazzini.png'
+import projectKingmaker from '@/assets/images/project_kingmaker.webp'
+import projectCarAI from '@/assets/video/project_carai.mp4'
+import projectStreetsAI from '@/assets/video/project_streetsai.mp4'
+import posterCarAI from '@/assets/images/poster_carai.jpg'
+import posterStreetsAI from '@/assets/images/poster_streetsai.jpg'
+import projectPixelliniSbarazzini from '@/assets/images/project_pixellini_sbarazzini.webp'
 
 export interface ProjectDetail {
   name: string
   tagline: string
   description: string
   media: string
+  /** Poster frame shown while a video media loads. */
+  poster?: string
   technologies: string[]
   features: string[]
   links?: {
@@ -52,11 +56,11 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     name: 'Portfolio Website',
     tagline: 'This very site, rebuilt on Nuxt',
     description:
-      'A server-rendered portfolio built with Nuxt 4 and Tailwind v4, wearing a dot-matrix terminal aesthetic. Server-side SEO, a canvas guestbook backed by Supabase, and a design system built around the Doto pixel typeface.',
+      'A server-rendered portfolio built with Nuxt 4 and Tailwind v4, wearing a dot-matrix terminal aesthetic. Server-side SEO, a canvas guestbook backed by Neon Postgres, and a design system built around the Doto pixel typeface.',
     media: projectPortfolio,
     category: 'Web Development',
     date: '2026',
-    technologies: ['Nuxt 4', 'Vue 3', 'TypeScript', 'Tailwind v4', 'Supabase', 'Nitro'],
+    technologies: ['Nuxt 4', 'Vue 3', 'TypeScript', 'Tailwind v4', 'Neon Postgres', 'Nitro'],
     features: [
       'Server-side rendering for SEO and fast first paint',
       'Interactive canvas guestbook backed by Supabase',
@@ -119,6 +123,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     description:
       'A sophisticated self-driving car simulation powered by neural networks and genetic algorithms. Watch as 100 AI-controlled cars learn to navigate traffic, avoid obstacles, and improve their driving skills through evolutionary learning.',
     media: projectCarAI,
+    poster: posterCarAI,
     category: 'AI Learning',
     date: '2022',
     technologies: ['Typescript', 'Vite'],
@@ -142,6 +147,7 @@ export const projectsDetailData: Record<string, ProjectDetail> = {
     description:
       'An advanced AI-powered city and self-driving car simulator featuring procedurally generated cities and real-world map integration via OpenStreetMap. Neural networks learn to navigate complex urban environments with realistic traffic patterns, road networks, and dynamic obstacles.',
     media: projectStreetsAI,
+    poster: posterStreetsAI,
     category: 'AI Learning',
     date: '2024',
     technologies: ['TypeScript', 'Canvas API', 'Neural Networks', 'OpenStreetMap API'],

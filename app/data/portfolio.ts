@@ -1,17 +1,18 @@
+import logoDaze from '@/assets/images/logo_daze.svg'
 import logoCving from '@/assets/images/logo_cving.png'
 import logoOripan from '@/assets/images/logo_oripan.png'
 import avatar from '@/assets/images/avatar.png'
 import projectPortfolio from '@/assets/images/project_portfolio.png'
 import projectDrinkando from '@/assets/images/project_drinkando.png'
-import projectKingmaker from '@/assets/images/project_kingmaker.png'
-import projectCarAI from '@/assets/images/project_carai.png'
-import projectStreetsAI from '@/assets/images/project_streetsai.png'
-import projectPixelliniSbarazzini from '@/assets/images/project_pixellini_sbarazzini.png'
+import projectKingmaker from '@/assets/images/project_kingmaker.webp'
+import projectCarAI from '@/assets/images/project_carai.webp'
+import projectStreetsAI from '@/assets/images/project_streetsai.webp'
+import projectPixelliniSbarazzini from '@/assets/images/project_pixellini_sbarazzini.webp'
 import type { workExperience } from '../types'
 
 export const personalInfo = {
   name: 'Mirko Bosetti',
-  title: 'Frontend Developer',
+  title: 'Full Stack Web Developer',
   location: 'Trento, Italy',
   yearsExperience: '6+',
   availability: 'Available for Opportunities',
@@ -19,13 +20,14 @@ export const personalInfo = {
   hero: {
     greeting: "Hi, I'm",
     name: 'MIRKO',
-    subtitle: "I'm a Frontend Developer",
+    subtitle: "I'm a Full Stack Web Developer",
     icon: 'lucide:laptop'
   },
   about: {
     summary: [
-      'Frontend Developer with <strong>6+ years of experience</strong> specializing in building modern, scalable web applications. Expert in <strong>Vue.js ecosystem</strong> (Vue 2/3, Nuxt.js) with a strong focus on performance optimization, user experience, and clean code architecture.',
-      "Currently working at <strong>Cving</strong>, where I've built critical features including a comprehensive back-office dashboard, candidate platform, and a real-time video interview system using <strong>WebRTC</strong> and <strong>Socket.io</strong>."
+      'Full Stack Web Developer with <strong>6+ years of experience</strong> building modern, scalable web applications. Expert in the <strong>Vue.js ecosystem</strong> (Vue 2/3, Nuxt.js), now also working with <strong>React</strong> and <strong>.NET</strong> APIs, with a strong focus on performance optimization, user experience, and clean code architecture.',
+      'Currently at <strong>Daze</strong>, an Italian e-mobility company, building web platforms for EV charging with React, MUI and .NET. Previously at <strong>Cving</strong> I built a back-office dashboard, the candidate platform, and a real-time video interview system using <strong>WebRTC</strong> and <strong>Socket.io</strong>.',
+      'On the side I am co-founder of <strong>Rhaeticon</strong>, where I design and ship production web projects end to end.'
     ],
     strengths: [
       {
@@ -70,7 +72,7 @@ export const personalInfo = {
     opportunities: {
       title: 'Open to Opportunities',
       description:
-        "I'm currently open to <strong>frontend roles</strong>, <strong>remote positions</strong>, and <strong>exciting projects</strong> where I can contribute my Vue.js expertise and grow as a developer. Particularly interested in <strong>product-focused companies</strong> and <strong>innovative startups</strong>."
+        "I'm currently open to <strong>full stack and frontend roles</strong>, <strong>remote positions</strong>, and <strong>exciting projects</strong> where I can contribute my Vue.js and React expertise and grow as a developer. Particularly interested in <strong>product-focused companies</strong> and <strong>innovative startups</strong>."
     }
   }
 }
@@ -78,6 +80,52 @@ export const personalInfo = {
 export const workExperiences: workExperience[] = [
   {
     step: 1,
+    company: {
+      name: 'Daze',
+      location: 'Bergamo, Italy',
+      description:
+        'Daze Technology s.r.l. — Italian e-mobility company designing EV charging hardware and the software platforms around it.',
+      linkedin: 'https://www.linkedin.com/company/dazetechnology/'
+    },
+    location: 'Bergamo, Italy',
+    remote: true,
+    logo: logoDaze,
+    period: '01/2026 - Present',
+    title: 'Full Stack Web Developer',
+    description:
+      'Building web platforms for the e-mobility world, working across the stack with React on the frontend and .NET APIs on the backend.',
+    contributions: [
+      {
+        description:
+          'Develop frontend features with React and MUI (Material UI) for the EV charging management platforms.'
+      },
+      {
+        description: 'Design and maintain backend REST APIs with .NET.'
+      },
+      {
+        description:
+          'Work in a Scrum team with Jira, contributing through pull requests and code reviews.'
+      },
+      {
+        description:
+          'Adopt AI-assisted development workflows (Claude Code) to speed up delivery while keeping code quality high.'
+      }
+    ],
+    technologies: [
+      'React',
+      'TypeScript',
+      'MUI (Material UI)',
+      '.NET',
+      'C#',
+      'REST APIs',
+      'Git',
+      'Jira',
+      'Scrum',
+      'Claude Code'
+    ]
+  },
+  {
+    step: 2,
     company: {
       name: 'Cving',
       location: 'Milan, Italy',
@@ -88,7 +136,7 @@ export const workExperiences: workExperience[] = [
     location: 'Milan, Italy',
     remote: true,
     logo: logoCving,
-    period: '02/2022 - Present',
+    period: '02/2022 - 01/2026',
     title: 'Front-end Developer',
     description: 'Working on building and maintaining web applications using Vue.js and Nuxt.js.',
     contributions: [
@@ -144,7 +192,7 @@ export const workExperiences: workExperience[] = [
     ]
   },
   {
-    step: 2,
+    step: 3,
     company: {
       name: 'Oripan',
       location: 'Tione di Trento, Italy',
@@ -252,7 +300,7 @@ export const projects = [
     title: 'Portfolio',
     description: 'This very site. Rebuilt on Nuxt with a terminal aesthetic.',
     image: projectPortfolio,
-    technologies: ['Nuxt 4', 'Vue 3', 'TypeScript', 'Tailwind v4', 'Supabase']
+    technologies: ['Nuxt 4', 'Vue 3', 'TypeScript', 'Tailwind v4', 'Neon Postgres']
   },
   {
     slug: 'gestoide',
@@ -274,11 +322,13 @@ export const skills = {
   frontend: [
     'Vue.js',
     'Nuxt.js',
+    'React',
     'TypeScript',
     'JavaScript',
     'HTML5',
     'CSS3',
     'Tailwind CSS',
+    'MUI (Material UI)',
     'Pinia',
     'Vuex',
     'Shadcn UI',
@@ -289,6 +339,8 @@ export const skills = {
     'Git',
     'GitHub',
     'Bitbucket',
+    'Jira',
+    'Claude Code',
     'Vite',
     'WebRTC',
     'Socket.io',
@@ -297,7 +349,7 @@ export const skills = {
     'npm/yarn',
     'Postman'
   ],
-  backend: ['MongoDB', 'PostgreSQL', 'Node.js', 'Express.js', 'ASP.NET Core'],
+  backend: ['MongoDB', 'PostgreSQL', 'Node.js', 'Express.js', '.NET', 'ASP.NET Core', 'C#'],
   soft: ['Agile/Scrum Methodology', 'Team Collaboration', 'Problem Solving', 'Code Review']
 }
 
@@ -307,43 +359,3 @@ export const socialLinks = {
   email: 'mirkobosetti1998@gmail.com'
 }
 
-export const contacts = [
-  {
-    icon: 'mdi:email',
-    iconColor: 'text-yellow-500',
-    title: 'Email',
-    value: socialLinks.email,
-    href: `mailto:${socialLinks.email}`
-  },
-  {
-    icon: 'mdi:linkedin',
-    iconColor: 'text-blue-500',
-    title: 'LinkedIn',
-    value: 'linkedin.com/in/mirkobosetti',
-    href: socialLinks.linkedin,
-    isExternal: true
-  },
-  {
-    icon: 'mdi:github',
-    iconColor: 'text-purple-500',
-    title: 'GitHub',
-    value: 'github.com/mirkobosetti',
-    href: socialLinks.github,
-    isExternal: true
-  },
-  {
-    icon: 'mdi:map-marker',
-    iconColor: 'text-green-500',
-    title: 'Location',
-    value: personalInfo.location
-  }
-]
-
-export const footer = {
-  copyright: '© 2025 Mirko Bosetti. Built with Vue.js & Tailwind CSS.',
-  socialLinks: [
-    { icon: 'mdi:github', href: socialLinks.github, label: 'GitHub' },
-    { icon: 'mdi:linkedin', href: socialLinks.linkedin, label: 'LinkedIn' },
-    { icon: 'mdi:email', href: `mailto:${socialLinks.email}`, label: 'Email' }
-  ]
-}

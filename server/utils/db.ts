@@ -27,4 +27,17 @@ export interface Note {
   created_at: string
 }
 
+/** Shape returned by the API — never exposes user_identifier or ip. */
+export interface PublicNote {
+  id: string
+  canvas: string
+  author: string
+  description: string
+  created_at: string
+  mine: boolean
+}
+
 export const MAX_NOTES_PER_USER = 3
+export const MAX_NOTES_PER_IP_PER_DAY = 10
+// Editor produces a 300x300 PNG data URL (~10-50KB); anything near this cap is abuse.
+export const MAX_CANVAS_LENGTH = 400_000

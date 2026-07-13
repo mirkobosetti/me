@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { socialLinks } from '~/data/portfolio'
 
-const year = 2026
+const year = new Date().getFullYear()
 const socials = [
   { icon: 'mdi:github', href: socialLinks.github, label: 'GitHub' },
   { icon: 'mdi:linkedin', href: socialLinks.linkedin, label: 'LinkedIn' },

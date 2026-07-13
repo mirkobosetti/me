@@ -24,10 +24,12 @@
     "@iconify-json/mdi": "^1.2.3",
     "@nuxt/icon": "^2.3.1",
     "@tailwindcss/vite": "^4.3.2",
+    "@types/node": "^26.1.1",
     "@vueuse/core": "^14.3.0",
     "@vueuse/nuxt": "^14.3.0",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.3.2",
-    "typescript": "^7.0.2",
+    "typescript": "~5.9.0",
     "vue-tsc": "^3.3.7"
   }
 }

@@ -66,6 +66,7 @@ const redo = () => step.value < history.value.length - 1 && (step.value++, resto
 const pos = (e: MouseEvent | TouchEvent) => {
   const rect = canvas.value!.getBoundingClientRect()
   const t = 'touches' in e ? e.touches[0] : (e as MouseEvent)
+  if (!t) return { x: 0, y: 0 }
   return {
     x: ((t.clientX - rect.left) * SIZE) / rect.width,
     y: ((t.clientY - rect.top) * SIZE) / rect.height

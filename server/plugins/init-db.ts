@@ -22,6 +22,7 @@ export default defineNitroPlugin(async () => {
         created_at timestamptz not null default now()
       )
     `
+    await sql`alter table notes add column if not exists ip text not null default ''`
     await sql`create index if not exists notes_user_idx on notes (user_identifier)`
     await sql`create index if not exists notes_created_idx on notes (created_at desc)`
     console.log('[init-db] notes table ready')

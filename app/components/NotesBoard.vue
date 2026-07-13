@@ -1,22 +1,27 @@
 <script setup lang="ts">
-import type { Note } from '~~/server/utils/db'
+import type { PublicNote } from '~~/server/utils/db'
 import { getUserIdentifier } from '~/lib/userIdentifier'
 
 const MAX = 3
 
-const { data: notes, pending, error, refresh } = await useFetch<Note[]>('/api/notes', {
+const userId = ref('')
+
+// `me` is reactive: once the identifier is known on the client, useFetch
+// refetches and the server marks our notes with `mine` (identifiers of
+// other visitors are never exposed).
+const { data: notes, pending, error, refresh } = await useFetch<PublicNote[]>('/api/notes', {
+  query: { me: userId },
   default: () => []
 })
 
 const editorOpen = ref(false)
 const saving = ref(false)
 const postError = ref('')
-const userId = ref('')
 const editor = ref()
 
 const remaining = computed(() => {
   if (!userId.value) return MAX
-  const mine = (notes.value ?? []).filter((n) => n.user_identifier === userId.value).length
+  const mine = (notes.value ?? []).filter((n) => n.mine).length
   return Math.max(0, MAX - mine)
 })
 

@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import { personalInfo, socialLinks } from '~/data/portfolio'
+import { profile } from '#shared/site'
+
+const route = useRoute()
+const siteUrl = useRuntimeConfig().public.siteUrl
 
 const site = {
-  url: 'https://mirkobosetti.com',
+  url: siteUrl,
   title: `${personalInfo.name} — ${personalInfo.title}`,
-  description:
-    'Mirko Bosetti, Frontend Developer based in Trento, Italy. 6+ years building fast, scalable web apps with the Vue.js and Nuxt ecosystem.'
+  description: profile.description,
+  ogImage: `${siteUrl}/og.png`
 }
 
 useHead({
   titleTemplate: (t) => (t ? `${t} · Mirko Bosetti` : site.title),
-  meta: [{ name: 'theme-color', content: '#0a0a0b' }]
+  meta: [{ name: 'theme-color', content: '#0a0a0b' }],
+  link: [{ rel: 'canonical', href: () => siteUrl + route.path }]
 })
 
 useSeoMeta({
@@ -19,11 +24,15 @@ useSeoMeta({
   ogType: 'website',
   ogTitle: site.title,
   ogDescription: site.description,
-  ogUrl: site.url,
+  ogUrl: () => siteUrl + route.path,
   ogSiteName: 'Mirko Bosetti',
+  ogImage: site.ogImage,
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
   twitterCard: 'summary_large_image',
   twitterTitle: site.title,
-  twitterDescription: site.description
+  twitterDescription: site.description,
+  twitterImage: site.ogImage
 })
 
 // JSON-LD for rich results / agentic crawlers
@@ -33,13 +42,25 @@ useHead({
       type: 'application/ld+json',
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: personalInfo.name,
-        jobTitle: personalInfo.title,
-        address: { '@type': 'PostalAddress', addressLocality: personalInfo.location },
-        url: site.url,
-        email: socialLinks.email,
-        sameAs: [socialLinks.github, socialLinks.linkedin]
+        '@graph': [
+          {
+            '@type': 'Person',
+            '@id': `${site.url}/#person`,
+            name: personalInfo.name,
+            jobTitle: personalInfo.title,
+            worksFor: { '@type': 'Organization', name: 'Daze Technology s.r.l.' },
+            address: { '@type': 'PostalAddress', addressLocality: personalInfo.location },
+            url: site.url,
+            email: socialLinks.email,
+            sameAs: [socialLinks.github, socialLinks.linkedin]
+          },
+          {
+            '@type': 'WebSite',
+            name: personalInfo.name,
+            url: site.url,
+            publisher: { '@id': `${site.url}/#person` }
+          }
+        ]
       })
     }
   ]

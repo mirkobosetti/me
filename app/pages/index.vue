@@ -49,8 +49,9 @@ const stats = [
           </h1>
 
           <p class="mt-6 max-w-[52ch] font-mono text-base leading-relaxed text-muted sm:text-lg">
-            Frontend Developer crafting fast, scalable web apps with the Vue and Nuxt ecosystem.
-            {{ personalInfo.yearsExperience }} years, based in {{ personalInfo.location }}.
+            Full Stack Web Developer crafting fast, scalable web apps — Vue &amp; Nuxt at heart,
+            React and .NET on the job. {{ personalInfo.yearsExperience }} years, based in
+            {{ personalInfo.location }}.
           </p>
 
           <div class="mt-8 flex flex-wrap gap-3">
@@ -316,8 +317,8 @@ const stats = [
               Let's build<br /><span class="text-accent">something good.</span>
             </h3>
             <p class="mt-4 max-w-[46ch] font-mono text-sm leading-relaxed text-muted">
-              Open to frontend roles, remote positions, and interesting projects. Drop a line and
-              I'll get back to you.
+              Open to full stack and frontend roles, remote positions, and interesting projects.
+              Drop a line and I'll get back to you.
             </p>
             <div class="mt-6 flex flex-wrap gap-3">
               <UiButton as="a" :href="`mailto:${socialLinks.email}`" size="lg">

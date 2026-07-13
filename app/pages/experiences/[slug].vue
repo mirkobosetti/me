@@ -6,13 +6,19 @@ const route = useRoute()
 const slug = computed(() => String(route.params.slug).toLowerCase())
 const exp = computed(() => workExperiences.find((e) => e.company.name.toLowerCase() === slug.value) ?? null)
 
-if (!exp.value) {
-  setResponseStatus(useRequestEvent(), 404)
+const event = useRequestEvent()
+if (!exp.value && event) {
+  setResponseStatus(event, 404)
 }
 
 useSeoMeta({
   title: () => (exp.value ? `${exp.value.company.name} · ${exp.value.title}` : 'Not found'),
-  description: () => exp.value?.description
+  description: () => exp.value?.description,
+  ogTitle: () =>
+    exp.value ? `${exp.value.title} @ ${exp.value.company.name} · Mirko Bosetti` : 'Not found',
+  ogDescription: () => exp.value?.description,
+  ogType: 'article',
+  robots: () => (exp.value ? undefined : 'noindex')
 })
 </script>
 
